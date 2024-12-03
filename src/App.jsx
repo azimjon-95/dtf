@@ -15,6 +15,7 @@ function App() {
     >
       <div className="app">
         <Navbar />
+
         <Routes>
           {routes.map(({ path, element, protected: isProtected }, index) => (
             <Route
