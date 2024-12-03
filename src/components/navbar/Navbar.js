@@ -1,10 +1,5 @@
 import React, { useState } from "react";
 import { IoSearch } from "react-icons/io5";
-import { Link } from 'react-router-dom'
-import { FcGoogle } from "react-icons/fc";
-import { IoMdClose } from "react-icons/io";
-import { IoLogoApple } from "react-icons/io";
-import { MdOutlineMail } from "react-icons/md";
 import { GoPencil } from "react-icons/go";
 import "./styles/navbar.css";
 import Editer from "./Editer";
@@ -12,7 +7,6 @@ import SignIn from "./SignIn";
 
 function Navbar() {
   const [showSearch, setShowSearch] = useState(false);
-  const [showModel, setShowModel] = useState(false);
   const [showModal, setShowModal] = useState(null); // Modalni boshqarish uchun
   const token = true; // Tokenni o'rniga haqiqiy autentifikatsiya holatini kiriting
 

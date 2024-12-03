@@ -37,6 +37,7 @@ function Editer({ setShowModal }) {
 
   const closeModal = () => {
     setShowModal(null);
+    document.title = "DTF"
   };
   const menu = (
     <Menu className="custom-menu">
