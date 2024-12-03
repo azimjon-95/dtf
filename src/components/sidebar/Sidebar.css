@@ -1,0 +1,103 @@
+.sidebar {
+  width: 220px;
+  height: 100%;
+  background-color: #161617;
+  padding: 16px 10px;
+  overflow: auto;
+}
+
+.sidebar::-webkit-scrollbar {
+  width: 7px; /* Scrollbar eni */
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: #232324; /* Scrollbar orqa fon rangi */
+  border-radius: 5px; /* Yumaloqlik */
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: #4a4a4a; /* Scrollbar qismi rangi */
+  border-radius: 5px; /* Yumaloqlik */
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background: #6b6b6b; /* Hover effekti */
+}
+
+.show_more_button,
+.sidebar_footer_item,
+.sidebar_item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 46px;
+  padding: 0px 10px;
+  color: #c9cccf;
+  text-decoration: none solid #c9cccf;
+  border-radius: 12px;
+  margin-bottom: 3px;
+
+  &.active,
+  &:hover {
+    background-color: #232324;
+  }
+
+  svg {
+    font-size: 20px;
+  }
+}
+
+.show_more_button {
+  background-color: transparent;
+  border: none;
+  font-size: 16px;
+
+  svg {
+    font-size: 15px;
+  }
+}
+
+.group_lists {
+  width: 100%;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+
+.sidebar_footer_title,
+.group_lists .group_list_title {
+  color: rgb(150, 156, 157);
+  font-size: 14px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
+
+.sidebar_group_list_item {
+  color: #c9cccf;
+  align-items: center;
+  border-radius: 12px;
+  cursor: pointer;
+  display: flex;
+  height: 46px;
+  gap: 12px;
+  padding: 0px 10px;
+  margin-bottom: 3px;
+
+  span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+  }
+
+  &:hover {
+    background-color: #232324;
+  }
+
+  img {
+    height: 28px;
+    width: 28px;
+    border-radius: 50%;
+  }
+}
