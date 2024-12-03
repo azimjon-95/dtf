@@ -1,0 +1,120 @@
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-backdrop .modal {
+    font: 400 17px / 26px Roboto, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif;
+    width: 40%;
+    min-width: 350px;
+    min-height: 350px;
+    vertical-align: baseline;
+    overflow: hidden auto;
+    color: rgb(201, 204, 207);
+    padding: 40px 0;
+    cursor: default;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    align-items: center;
+    position: relative;
+    background: none 0% 0% / auto repeat scroll padding-box border-box rgb(35, 35, 36);
+}
+
+.modal-backdrop .modal del {
+    position: absolute;
+    top: 18px;
+    right: 23px;
+    cursor: pointer;
+    font-size: 23px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-backdrop .modal del:hover {
+    background: none 0% 0% / auto repeat scroll padding-box border-box rgb(51, 51, 51);
+}
+
+.dtf_modal {
+    font: 800 28px / 26px Roboto, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif;
+    vertical-align: baseline;
+    align-items: center;
+    background-color: rgb(240, 249, 255);
+    border-radius: 16px;
+    color: rgb(0, 0, 0);
+    display: flex;
+    height: 64px;
+    justify-content: center;
+    position: relative;
+    width: 64px;
+    text-align: center;
+    cursor: default;
+}
+
+.auth_login {
+    font: 500 17px / 17px Roboto, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif;
+    overflow: visible;
+    background: none 0% 0% / auto repeat scroll padding-box border-box #2c2c2cec;
+    align-items: center;
+    border-radius: 12px;
+    color: rgb(201, 204, 207);
+    cursor: pointer;
+    display: flex;
+    height: 48px;
+    width: 340px;
+    justify-content: center;
+    white-space: nowrap;
+    position: relative;
+    text-align: center;
+    border: none;
+}
+
+.auth_login:hover {
+    background: none 0% 0% / auto repeat scroll padding-box border-box rgb(39, 39, 39);
+}
+
+.auth_login>svg {
+    position: absolute;
+    left: 15px;
+    font-size: 25px;
+}
+
+.modal-backdrop .modal h2 {
+    font: 500 22px / 30px Roboto, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif;
+    vertical-align: baseline;
+    text-align: center;
+    color: rgb(201, 204, 207);
+    cursor: default;
+    background: none 0% 0% / auto repeat scroll padding-box border-box rgb(35, 35, 36);
+    margin-bottom: 20px;
+}
+
+.modal-backdrop .modal p {
+    font: 400 17px / 26px Roboto, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif;
+    vertical-align: baseline;
+    grid-area: secondary;
+    text-align: center;
+    color: rgb(201, 204, 207);
+    cursor: default;
+    background: none 0% 0% / auto repeat scroll padding-box border-box rgb(35, 35, 36);
+}
+
+.modal-backdrop .modal p>a {
+    color: #418AF4;
+}

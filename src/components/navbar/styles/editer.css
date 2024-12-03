@@ -1,0 +1,216 @@
+.modal-editor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal_ed_overflow {
+    font: 400 17px / 26px Roboto, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif;
+    width: 100%;
+    height: 100vh;
+    vertical-align: baseline;
+    overflow: hidden auto;
+    color: #c9cccf;
+    cursor: default;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    background: none 0% 0% / auto repeat scroll padding-box border-box rgb(35, 35, 36);
+}
+
+
+.modal_ed {
+    font: 400 17px / 26px Roboto, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif;
+    width: 800px;
+    min-width: 350px;
+    min-height: 350px;
+    height: 93% !important;
+    vertical-align: baseline;
+    overflow: hidden auto;
+    color: #c9cccf;
+    cursor: default;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    background: none 0% 0% / auto repeat scroll padding-box border-box rgb(35, 35, 36);
+}
+
+.dtf_modal_box {
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+}
+
+.text_ar_box {
+    width: 100%;
+    min-height: 370px;
+    background: #9e1414;
+    padding: 10px 0;
+}
+
+.text_ar_btns {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.moreHorizontal {
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.moreHorizontal:hover {
+    background: none 0% 0% / auto repeat scroll padding-box border-box rgb(51, 51, 51);
+}
+
+.moreHorizontal>svg {
+    font-size: 25px;
+}
+
+.text_ar_btns>button {
+    font: 500 17px / 17px Roboto, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif;
+    overflow: visible;
+    background: none 0% 0% / auto repeat scroll padding-box border-box rgb(65, 138, 244);
+    padding: 0px 16px;
+    align-items: center;
+    border-radius: 10px;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    display: flex;
+    border: none;
+    height: 42px;
+    justify-content: center;
+    white-space: nowrap;
+    order: 0;
+}
+
+.dtf_modal_head {
+    width: 100%;
+    height: 45px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 10px;
+    padding-right: 15px;
+}
+
+.dtf_modal_head del {
+    cursor: pointer;
+    font-size: 23px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dtf_modal_head del:hover {
+    background: none 0% 0% / auto repeat scroll padding-box border-box rgb(51, 51, 51);
+}
+
+.dtf_modal_head>span {
+    cursor: pointer;
+    font-size: 20px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dtf_modal_head span:hover {
+    background: none 0% 0% / auto repeat scroll padding-box border-box rgb(51, 51, 51);
+}
+
+.user_model-box {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    gap: 10px;
+}
+
+.user_model-box span b {
+    font: 500 16px / 22px Roboto, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif;
+    vertical-align: baseline;
+    white-space: nowrap;
+    color: rgb(201, 204, 207);
+    cursor: default;
+    margin-left: 5px;
+}
+
+.user_model-box span select {
+    box-sizing: border-box;
+    font: 400 13px / 18px Roboto, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif;
+    vertical-align: baseline;
+    opacity: 0.72;
+    align-items: flex-end;
+    color: rgb(201, 204, 207);
+    cursor: pointer;
+    display: flex;
+    border: none;
+    background: transparent;
+    padding: 0;
+}
+
+.user_model-bo_img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #74c065;
+}
+
+.menu_item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    box-sizing: border-box;
+    font: 400 15px / 22px Roboto, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif;
+    vertical-align: baseline;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: rgb(201, 204, 207);
+    text-decoration-color: rgb(201, 204, 207);
+    text-decoration-style: solid;
+    text-decoration-thickness: auto;
+    cursor: pointer;
+}
+
+.menu_item>svg {
+    font-size: 21px;
+}
+
+.custom-menu {
+    box-shadow: 0 4px 8px #0000001a !important;
+    font: 400 17px / 26px Roboto, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif;
+    padding: 6px;
+    vertical-align: baseline;
+    overflow: hidden auto;
+    position: relative;
+    max-height: none;
+    color: rgb(201, 204, 207);
+    background-color: #1f1f1f !important;
+    border: .2px solid #8080806d !important;
+}
