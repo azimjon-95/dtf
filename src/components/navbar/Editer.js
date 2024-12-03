@@ -19,10 +19,20 @@ function Editer({ setShowModal }) {
   const [isCheck, setIsCheck] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
   const [hasText, setHasText] = useState(false);
+  const [titleText, setTitleText] = useState(false);
+  const [inputTitle, setInputTitle] = useState("");
   const [isHovered, setIsHovered] = useState(false);
+  const [isSubTitle, setIsSubTitle] = useState(false);
+  const [isFocusedTitle, setIsFocusedTitle] = useState(false);
 
   const handleInputChange = (e) => {
     setHasText(e.target.value.length > 0);
+    setInputTitle(e.target.value)
+  };
+
+  const handleTitleChange = (e) => {
+    setTitleText(e.target.value.length > 0);
+    setInputTitle(e.target.value)
   };
 
   const closeModal = () => {
@@ -52,8 +62,12 @@ function Editer({ setShowModal }) {
 
   // HTML title ni o'zgartirish
   useEffect(() => {
-    document.title = "✏️ Новый пост"; // pen ikonkasi bilan nomni yangilash
-  }, []);
+    if (inputTitle) {
+      document.title = `✏️ ${inputTitle}`; // Inputdagi qiymatni title sifatida o'rnatish
+    } else {
+      document.title = "✏️ Новый пост"; // Default title
+    }
+  }, [inputTitle]); // inputTitle o'zgarganda effect ishlaydi
 
 
   const plTexts = [
@@ -131,33 +145,25 @@ function Editer({ setShowModal }) {
 
             <div
               className="input_btn_nexts"
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(false)}
+              onMouseEnter={() => setIsSubTitle(true)}
+              onMouseLeave={() => setIsSubTitle(false)}
             >
-              {!(isFocused || !hasText || !isHovered) ? (
-                <button
-                  onMouseEnter={() => setIsHovered(true)}
-                  onMouseLeave={() => setIsHovered(false)}
-                >
-                  <BiGridVertical />
-                </button>
+              {!(!titleText) ? (
+                <>
+                  {isSubTitle ? <button> <BiGridVertical /></button> : ""}
+                </>
               )
                 : (
-                  <button
-                    onMouseEnter={() => setIsHovered(true)}
-                    onMouseLeave={() => setIsHovered(false)}
-                  >
-                    <FiPlus />
-                  </button>
+                  <button> <FiPlus /></button>
                 )
               }
               <input
 
                 type="text"
                 placeholder={placeholder}
-                onFocus={() => setIsFocused(true)} // Fokus holatida
-                onBlur={() => setIsFocused(false)} // Fokusdan chiqishda
-                onChange={handleInputChange} // Matnni kuzatish
+                onFocus={() => setIsFocusedTitle(true)} // Fokus holatida
+                onBlur={() => setIsFocusedTitle(false)} // Fokusdan chiqishda
+                onChange={handleTitleChange} // Matnni kuzatish
               />
             </div>
           </div>
