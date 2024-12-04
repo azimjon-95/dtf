@@ -1,8 +1,8 @@
 .sidebar {
-  width: 220px;
+  width: 250px;
   height: 100%;
   background-color: #161617;
-  padding: 16px 10px;
+  padding: 16px 7px 17px 10px;
   overflow: auto;
 }
 
@@ -36,6 +36,7 @@
   text-decoration: none solid #c9cccf;
   border-radius: 12px;
   margin-bottom: 3px;
+  font-size: 16px;
 
   &.active,
   &:hover {
@@ -83,6 +84,7 @@
   gap: 12px;
   padding: 0px 10px;
   margin-bottom: 3px;
+  font-size: 16px;
 
   span {
     white-space: nowrap;
