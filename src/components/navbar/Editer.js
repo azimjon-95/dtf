@@ -93,6 +93,66 @@ function Editer({ setShowModal }) {
   }, []); // Faqat bir marta bajariladi (komponent yuklanganda)
 
 
+
+
+
+  // const [elements, setElements] = useState([]); // Dastlab hech qanday input yo'q
+
+  // const addElement = () => {
+  //   setElements((prevElements) => [
+  //     ...prevElements,
+  //     {
+  //       id: prevElements.length, // Inputlarni 0, 1, 2 kabi indekslash
+  //       hasText: false,
+  //       inputValue: "", // Dastlabki qiymat bo'sh
+  //     },
+  //   ]);
+  // };
+
+  // const handleInputChangese = (id, event) => {
+  //   const value = event.target.value; // Input qiymatini olamiz
+  //   setElements((prevElements) =>
+  //     prevElements.map((el) =>
+  //       el.id === id ? { ...el, hasText: value.length > 0, inputValue: value } : el
+  //     )
+  //   );
+  // };
+
+  const [isFirstInputVisible, setIsFirstInputVisible] = useState(false); // Birinchi input ko'rinishini boshqarish
+
+  const [elements, setElements] = useState([
+    { id: 0, inputValue: "", hasText: false }, // Dastlab birinchi input bo'ladi
+  ]);
+
+  const addElement = () => {
+    setIsFirstInputVisible(true);
+    const firstElement = elements[0]; // Birinchi inputni tekshiramiz
+    if (firstElement.inputValue.trim() === "") return; // Agar input bo'sh bo'lsa, yangi element qo'shilmaydi
+
+    // Yangi inputni yaratish
+    setElements((prevElements) => [
+      ...prevElements,
+      {
+        id: prevElements.length,
+        inputValue: "", // Yangi input bo'sh qiymat bilan boshlanadi
+        hasText: false,
+      },
+    ]);
+  };
+
+  const handleInputChangese = (id, event) => {
+    if (!event || !event.target) return;
+
+    const value = event.target.value;
+    setElements((prevElements) =>
+      prevElements.map((el) =>
+        el.id === id
+          ? { ...el, inputValue: value, hasText: value.trim() !== "" }
+          : el
+      )
+    );
+  };
+
   return (
     <div className="modal-editor" onClick={closeModal}>
       <div className={`${showModel ? "modal_ed_overflow" : "modal_ed"}`} onClick={(e) => e.stopPropagation()}>
@@ -144,31 +204,35 @@ function Editer({ setShowModal }) {
               />
             </div>
 
-            <div
-              className="input_btn_nexts"
-              onMouseEnter={() => setIsSubTitle(true)}
-              onMouseLeave={() => setIsSubTitle(false)}
-            >
-              {!(!titleText) ? (
-                <>
-                  {isSubTitle ? <button> <BiGridVertical /></button> : ""}
-                </>
-              )
-                : (
-                  <button> <FiPlus /></button>
-                )
-              }
-              <input
-
-                type="text"
-                placeholder={placeholder}
-                onFocus={() => setIsFocusedTitle(true)} // Fokus holatida
-                onBlur={() => setIsFocusedTitle(false)} // Fokusdan chiqishda
-                onChange={handleTitleChange} // Matnni kuzatish
-              />
-            </div>
+            {elements.map((element, index) => (
+              <div
+                className="input_btn_nexts"
+                key={element.id}
+                style={{ marginBottom: "10px" }}
+              >
+                {element.hasText ? (
+                  <button>
+                    <BiGridVertical />
+                  </button>
+                ) : (<button> <FiPlus /></button>)}
+                <input
+                  type="text"
+                  placeholder={
+                    index === 0
+                      ? placeholder // Birinchi input uchun alohida placeholder
+                      : "Нажмите Tab для выбора инструмента" // Qolgan inputlar uchun umumiy placeholder
+                  }
+                  value={element.inputValue} // Har bir input qiymatini boshqarish
+                  onChange={(e) => handleInputChangese(element.id, e)} // Input o'zgarishini kuzatish
+                />
+              </div>
+            ))}
           </div>
-
+          {!isFirstInputVisible && (
+            <button onClick={addElement} className="add-button">
+              <FiPlus /> Добавить
+            </button>
+          )}
           <div className="text_ar_btns">
             <button>Опубликовать</button>
             <Dropdown overlay={menu} trigger={["click"]}>
@@ -194,4 +258,5 @@ function Editer({ setShowModal }) {
 }
 
 export default Editer;
+
 
