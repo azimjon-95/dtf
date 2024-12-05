@@ -223,6 +223,7 @@
     height: 50px;
     display: flex;
     gap: 10px;
+    position: relative;
 }
 
 .user_model-box span b {
@@ -234,18 +235,37 @@
     margin-left: 5px;
 }
 
-.user_model-box span select {
+.user_model-box>span>div {
     box-sizing: border-box;
     font: 400 13px / 18px Roboto, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif;
     vertical-align: baseline;
     opacity: 0.72;
-    align-items: flex-end;
     color: rgb(201, 204, 207);
     cursor: pointer;
     display: flex;
+    align-items: center;
     border: none;
     background: transparent;
-    padding: 0;
+    margin-left: 4px;
+    gap: 7px;
+}
+
+.user_model-box>span>div>span {
+    width: 23px;
+    height: 23px;
+    border-radius: 50%;
+    position: absolute;
+    left: 37px;
+    top: 24px;
+    z-index: 30;
+    background: #232324;
+    border: 1.5px solid #232324;
+    overflow: hidden;
+}
+
+.user_model-box>span>div>span>img {
+    width: 100%;
+    height: 100%;
 }
 
 .user_model-bo_img {
@@ -308,4 +328,79 @@
     margin: 0px;
     vertical-align: baseline;
     color: #c9cccf;
+}
+
+
+.user_model-box .ant-select-selector {
+    background: transparent !important;
+    border: none !important;
+    color: #c9cccf !important;
+}
+
+
+
+
+
+.dropdown-select {
+    width: 250px;
+    max-height: 200px;
+    background-color: #1F1F1F !important;
+    color: #c9cccf !important;
+    padding: 5px;
+    overflow: hidden;
+    border: .3px solid #8080806d;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px #0000004d;
+    /* Shadow effekti */
+}
+
+.ant-input-affix-wrapper>input::placeholder {
+    color: #8c8c8c !important;
+}
+
+.dropdown-select-box {
+    width: 100%;
+    max-height: 160px;
+
+    overflow: auto;
+}
+
+.dropdown-select-box::-webkit-scrollbar {
+    width: 4px;
+}
+
+.dropdown-select-box::-webkit-scrollbar-track {
+    background: transparent;
+    /* Track rangi */
+    border-radius: 4px;
+    /* Yumaloq burchaklar */
+}
+
+/* Scroll o'zi */
+.dropdown-select-box::-webkit-scrollbar-thumb {
+    background: #575757;
+    /* Scroll rangi */
+    border-radius: 4px;
+    /* Yumaloq burchaklar */
+}
+
+.custom-search-input {
+    border: 1px solid dodgerblue;
+    box-shadow: 0px 0px 8px rgba(30, 143, 255, 0.237);
+}
+
+/* Hover qilganda scroll */
+.dropdown-select-box::-webkit-scrollbar-thumb:hover {
+    background: #8c8c8c;
+    /* Hoverda scroll rangi */
+}
+
+.dropdown-select-box>div {
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.dropdown-select-box>div:hover {
+    background-color: #2b2b2b !important;
 }
