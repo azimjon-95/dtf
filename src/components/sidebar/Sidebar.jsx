@@ -25,7 +25,7 @@ function Sidebar() {
     {
       id: 2,
       name: "Свежее",
-      link: "/fresh",
+      link: "/new",
       icon: <GoClock />,
     },
     {
@@ -155,7 +155,7 @@ function Sidebar() {
     {
       id: 2,
       name: "Правила",
-      link: "/help",
+      link: "/rules",
       icon: <PiWarningOctagonLight />,
     },
     {
