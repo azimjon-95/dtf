@@ -1,7 +1,7 @@
 import React from "react";
-import "./Content.css";
+import "./NewContent.css";
 import Layout from "../layout/Layout";
-import ContentItem from "./ContentItem";
+import ContentItem from "./NewContentItem";
 
 function Content() {
   let data = [1, 2, 3, 4, 5];

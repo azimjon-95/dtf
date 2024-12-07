@@ -78,27 +78,17 @@ function Navbar() {
           ) : null}
         </div>
 
-        {/* <span className="notifications_navbar">
-          <IoNotificationsOutline />
-          <div className="notifications_navbar_news">2</div>
-        </span> */}
         <Dropdown overlay={notificationList} trigger={['click']} placement="bottomRight">
-          <span className="notifications_navbar" style={{ position: "relative", cursor: "pointer" }}>
-            <IoNotificationsOutline size={24} />
+          <span className="notifications_navbar">
+            <IoNotificationsOutline />
             {unreadCount > 0 && (
-              <Badge
-                count={unreadCount}
-                style={{
-                  position: "absolute",
-                  top: 0,
-                  right: 0,
-                  background: "#ff4d4f",
-                  color: "#fff",
-                }}
-              />
+              <div className="notifications_navbar_news">2</div>
             )}
           </span>
         </Dropdown>
+
+
+
 
         <button onClick={() => openModal(token ? "write" : "login")}>
           <GoPencil /> Написать

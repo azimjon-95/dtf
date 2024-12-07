@@ -2,7 +2,6 @@ import React, { Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 import routes from "./routes/Routes";
 import AuthRoute from "./authentication/AuthRoute";
-import NotificationSettings from "./pages/notificationSettings/NotificationSettings";
 import Navbar from "./components/navbar/Navbar";
 
 function App() {
@@ -14,7 +13,6 @@ function App() {
         </div>
       }
     >
-      <NotificationSettings />
 
       <div className="app">
         <Navbar />

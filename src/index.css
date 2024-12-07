@@ -1,3 +1,9 @@
+/* roboto */
+@font-face {
+  font-family: roboto;
+  src: url("./fonts/roboto/Roboto-Regular.ttf");
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -5,6 +11,7 @@
   font-family: sans-serif;
   -webkit-user-select: none;
   user-select: none;
+  font-family: roboto;
 }
 
 a {
