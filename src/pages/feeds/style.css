@@ -1,0 +1,103 @@
+.notification-continer {
+    background-color: #232324;
+    width: 100%;
+    border-radius: 10px;
+    margin: 10px 0;
+    padding-bottom: 15px;
+}
+
+
+.notification-header {
+    font: 400 17px / 26px Roboto, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif;
+    padding: 0px 18px;
+    vertical-align: baseline;
+    align-items: center;
+    background-color: rgb(35, 35, 36);
+    border-radius: 10px 10px 0px 0px;
+    box-shadow: rgb(53, 52, 54) 0px -1px 0px 0px inset;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+    color: rgb(201, 204, 207);
+}
+
+.notification-header>a>h2 {
+    font: 500 17px / 26px Roboto, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif;
+    vertical-align: baseline;
+    color: rgb(201, 204, 207);
+    background-color: rgb(35, 35, 36);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.notification-header>button {
+    font: 400 16px / 26px Roboto, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif;
+    overflow: visible;
+    opacity: 0.72;
+    align-items: center;
+    color: #418af4;
+    cursor: pointer;
+    display: flex;
+    border: none;
+    background: transparent;
+}
+
+.notification-header>button:hover {
+    color: rgb(0, 128, 255);
+
+}
+
+.ant-blog-inner_box {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 0px 18px;
+}
+
+
+.ant-blog-inner_box .ant-input-outlined {
+    background: #2C2C2D !important;
+    border-style: solid;
+    border: .4px solid #00000000;
+    color: #d9d9d9 !important;
+    height: 40px;
+    width: 390px;
+}
+
+.ant-blog-inner_box .ant-input-outlined::placeholder {
+    color: #d9d9d96a !important;
+}
+
+.ant-blog-inner_box .ant-input-outlined:hover {
+    color: rgb(201, 204, 207);
+    box-shadow: #334e6427 0px 0px 0px 3px;
+    border: 0.888889px solid #334e64;
+}
+
+.ant-input-show-count-suffix {
+    color: #d9d9d9 !important;
+}
+
+.ant-input-affix-wrapper {
+    position: relative;
+    display: inline-flex;
+    width: 100%;
+    min-width: 0;
+    padding: 4px 11px;
+    color: #d9d9d9 !important;
+    font-size: 14px;
+    line-height: 1.5714285714285714;
+    border-radius: 6px;
+    transition: all 0.2s;
+}
+
+.ant-typography {
+    font: 500 16px / 26px Roboto, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif !important;
+    margin: 20px 0px 6px !important;
+    vertical-align: baseline !important;
+    color: rgb(201, 204, 207) !important;
+    background-color: rgb(35, 35, 36) !important;
+}
