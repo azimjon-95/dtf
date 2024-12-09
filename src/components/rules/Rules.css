@@ -10,6 +10,19 @@
   padding: 24px;
 }
 
+.blockquote {
+  border-left: 4px solid #007bff;
+  padding-left: 10px;
+  margin-bottom: 20px;
+  font-size: 20px;
+  color: #c9cccf;
+  border-radius: 3px;
+}
+
+.rules_top_blockquote_link {
+  font-size: 20px !important ;
+}
+
 .rules_top_title {
   color: #c9cccf;
   font-size: 15px;
@@ -63,16 +76,25 @@
     line-height: 26px;
     font-family: roboto;
     font-weight: 100;
+
+    a {
+      font-size: 17px;
+      color: #408bf4;
+      line-height: 26px;
+      font-family: roboto;
+      font-weight: 100;
+      margin-bottom: 13px;
+      position: relative;
+    }
   }
 }
 
-.rules_top a {
+.rules_top p a {
   font-size: 17px;
   color: #408bf4;
   line-height: 26px;
   font-family: roboto;
   font-weight: 100;
-  padding-left: 40px;
   margin-bottom: 13px;
   position: relative;
 }

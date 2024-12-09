@@ -11,9 +11,11 @@ import { PiWarningOctagonLight } from "react-icons/pi";
 import { IoStarOutline } from "react-icons/io5";
 import { MdQrCodeScanner } from "react-icons/md";
 import { FaChevronDown } from "react-icons/fa";
+import Application from "../application/Application";
 
 function Sidebar() {
   const [showAll, setShowAll] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   let sidebarLinks = [
     {
@@ -218,6 +220,14 @@ function Sidebar() {
             {link.icon} {link.name}
           </NavLink>
         ))}
+        {showModal && <Application setShowModal={setShowModal} />}
+        <button
+          onClick={() => setShowModal(true)}
+          className="sidebar_footer_item"
+        >
+          <MdQrCodeScanner />
+          Приложения
+        </button>
       </div>
     </div>
   );

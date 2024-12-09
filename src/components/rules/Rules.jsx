@@ -10,6 +10,7 @@ import {
 } from "@ant-design/icons";
 import { Menu, Dropdown } from "antd";
 import { Link } from "react-router-dom";
+import ContentItem from "./ContentItem";
 
 function Rules() {
   const menu = (
@@ -32,6 +33,8 @@ function Rules() {
       </Menu.Item>
     </Menu>
   );
+  let data = [1, 2, 3, 4, 5];
+
   return (
     <Layout>
       <div className="rules">
@@ -64,7 +67,9 @@ function Rules() {
           <h2 className="rules_top_title">Правила общения на DTF</h2>
           <p className="blockquote">
             Создавая аккаунт на DTF, вы принимаете{" "}
-            <Link to="/">юридические правила</Link>
+            <Link className="rules_top_blockquote_link" to="/">
+              юридические правила{" "}
+            </Link>
             использования нашего продукта.
           </p>
           <p className="ruler_top_text">
@@ -236,7 +241,7 @@ function Rules() {
           <p className="ruler_top_text">
             Полное копирование чужих материалов под запретом. Если вы хотите
             поделиться интересной статьей, можно опубликовать ссылку на нее в
-            теме « <Link to="/">Ссылки в интернете</Link> ».
+            теме «<Link to="/">Ссылки в интернете</Link>».
           </p>
           <p className="ruler_top_text">
             Полнотекстовая публикация чужих материалов допускается:
@@ -419,7 +424,7 @@ function Rules() {
             <li>
               Отправляйте письма с почты, на которую зарегистрирован профиль.
               Если почта не прикреплена, то вот{" "}
-              <Link to="/">инструкция по восстановлению.</Link>
+              <Link to="/">инструкция по восстановлению. </Link>
               Другой способ — напишите на <Link to="/">support@dtf.ru</Link>,
             </li>
             <li>
@@ -451,8 +456,8 @@ function Rules() {
             обновляться. Этот список не является исчерпывающим, а решение о
             допустимости того или иного поступка и мера наказания могут
             меняться. По решению администрации любой материал может быть признан
-            нарушающим принципы сообщества в соответствии с юридическими
-            правилами использования продукта.
+            нарушающим принципы сообщества в соответствии с{" "}
+            <Link>юридическими правилами</Link> использования продукта.
           </p>
           <p className="ruler_top_text">
             Вы можете пожаловаться на любой комментарий или материал, который
@@ -468,6 +473,14 @@ function Rules() {
             что мы пожелаем.
           </p>
           <p className="ruler_top_text">Спасибо.</p>
+        </div>
+
+        <div className="content_cards">
+          <h2 className="content_cards_title">Рекомендации</h2>
+
+          {data.map((item, index) => (
+            <ContentItem key={index} item={item} />
+          ))}
         </div>
       </div>
     </Layout>
