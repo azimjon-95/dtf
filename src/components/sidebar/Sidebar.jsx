@@ -21,7 +21,7 @@ function Sidebar() {
     {
       id: 1,
       name: "Популярное",
-      link: "/",
+      link: "/popular",
       icon: <FireOutlined />,
     },
     {
@@ -33,13 +33,13 @@ function Sidebar() {
     {
       id: 3,
       name: "Моя лента",
-      link: "/feed",
+      link: "/my",
       icon: <BiMessageSquareCheck />,
     },
     {
       id: 4,
       name: "Сообщения",
-      link: "/messages",
+      link: "/message",
       icon: <RiMessage2Line />,
     },
     {

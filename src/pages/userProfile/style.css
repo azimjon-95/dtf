@@ -1,0 +1,278 @@
+.UserProfile-continer {
+    /* background-color: #232324; */
+    width: 100%;
+    border-radius: 10px;
+    margin: 10px 0;
+    padding-bottom: 15px;
+}
+
+/* App container */
+.app-container {
+    width: 100%;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+}
+
+/* Profile card styles */
+.profile-card {
+    background-color: #232324;
+    color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.cover-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    /* Rasm chegaradan chiqmasligi uchun */
+    position: relative;
+    /* Rasmni joylashtirish uchun */
+    background: #353436;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cover-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-info {
+    padding: 20px 20px 0 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 12px;
+    position: relative;
+}
+
+.profile-info h2 {
+    font: 500 22px / 30px Roboto, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif;
+    margin: 0px;
+    box-sizing: border-box;
+    vertical-align: baseline;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: rgb(201, 204, 207);
+    background-color: rgb(35, 35, 36);
+}
+
+.profile-info>span {
+    font: 500 15px / 22px Roboto, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif;
+    vertical-align: baseline;
+    color: #33a03e;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.profile-info>span>p {
+    font: 400 15px / 22px Roboto, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif;
+    vertical-align: baseline;
+    color: #969c9d !important;
+    background-color: rgb(35, 35, 36);
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.profile-info>strong {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.profile-info>strong>p {
+    font: 400 15px / 22px Roboto, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif;
+    vertical-align: baseline;
+    display: flex;
+    color: rgb(201, 204, 207);
+    background-color: rgb(35, 35, 36);
+}
+
+.profile-info>div {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+
+
+.profile-info .buttons button {
+    background-color: rgba(0, 0, 0, 0);
+    box-sizing: border-box;
+    font: 400 15px / 22px Roboto, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif;
+    vertical-align: baseline;
+    color: rgb(201, 204, 207);
+    text-decoration: none solid rgb(201, 204, 207);
+    align-items: center;
+    display: flex;
+    height: 50px;
+    transition: color 0.15s, border-bottom 0.15s;
+    border: none;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+}
+
+.profile-info .buttons button.active {
+    color: white;
+    border-bottom: 3px solid dodgerblue;
+}
+
+.profile-info .avatar {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 3px solid #232324;
+    margin-top: -58px;
+
+    font: 400 15px / 22px Roboto, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif;
+    vertical-align: baseline;
+    align-items: center;
+    background-color: #00000033;
+    cursor: pointer;
+    display: flex;
+    height: 90px;
+    justify-content: center;
+    opacity: 1;
+    color: #c9cccf;
+}
+
+/* Post list styles */
+.post-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Post card styles */
+.post-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #f9f9f9;
+}
+
+.post-header .post-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.post-image {
+    width: 100%;
+    height: auto;
+}
+
+.post-footer {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    background-color: #f9f9f9;
+    font-size: 14px;
+    color: #555;
+}
+
+.profile-info>button {
+    font: 500 18px / 15px Roboto, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif;
+    overflow: visible;
+    background: none 0% 0% / auto repeat scroll padding-box border-box rgb(44, 44, 44);
+    align-items: center;
+    border-radius: 9px;
+    color: rgb(201, 204, 207);
+    cursor: pointer;
+    display: flex;
+    height: 34px;
+    justify-content: center;
+    white-space: nowrap;
+    width: 38px;
+    border: none;
+    position: absolute;
+    right: 17px;
+    top: 17px;
+}
+
+
+
+.upload_image {
+    font: 500 13px / 13px Roboto, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif;
+    background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    border-radius: 8px;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    height: 28px;
+    justify-content: center;
+    white-space: nowrap;
+    border: none;
+}
+
+.actions_image_box {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.actions_image_box>button {
+    font: 500 13px / 13px Roboto, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif;
+    overflow: visible;
+    background: none 0% 0% / auto repeat scroll padding-box border-box rgb(89, 143, 222);
+    padding: 0px 10px 1px;
+    align-items: center;
+    border-radius: 8px;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    display: flex;
+    height: 28px;
+    justify-content: center;
+    white-space: nowrap;
+    border: none;
+}
+
+.cover-image:hover .actions_image_edit {
+    transition: .5s;
+    opacity: 1;
+}
+
+.actions_image_edit {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    border: none;
+    transition: .5s;
+    font: 500 13px / 13px Roboto, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif;
+    overflow: visible;
+    background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0.45);
+    padding: 10px;
+    align-items: center;
+    border-radius: 8px;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    display: inline-flex;
+    height: 28px;
+    justify-content: center;
+    white-space: nowrap;
+    gap: 6px;
+    opacity: 0;
+}

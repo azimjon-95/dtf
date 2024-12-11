@@ -1,0 +1,42 @@
+.terms {
+  width: 100%;
+  padding: 20px 0;
+}
+
+.terms_top {
+  width: 100%;
+  background-color: #232324;
+  border-radius: 10px;
+  padding: 24px;
+}
+
+.terms_link_item {
+  font-size: 17px;
+  color: #418af4;
+  display: block;
+  margin-bottom: 15px;
+  line-height: 26px;
+  font-family: roboto;
+  font-weight: 100;
+  &:hover {
+    color: #649bef;
+  }
+}
+
+.terms ul {
+  padding-left: 30px;
+}
+
+.terms ul li {
+  font-size: 17px;
+  color: #c9cccf;
+  margin-bottom: 20px;
+  line-height: 26px;
+  font-family: roboto;
+  font-weight: 100;
+}
+
+.rules_top_title a,
+.terms .ruler_top_text a {
+  color: #649bef;
+}

@@ -145,7 +145,7 @@ const Navbar = () => {
       </div>
 
       <div className="avatar_menu_box">
-        <Link to="/">
+        <Link to="/u">
           <div className="avatar_myProfile">
             <Avatar size={45}
               style={{ cursor: "pointer", backgroundColor: "#87d068" }}
@@ -162,7 +162,10 @@ const Navbar = () => {
         <Link to="/drafts">
           <button ><GoPencil /> Черновики</button>
         </Link>
-        <button><FiBookmark /> Закладки</button>
+        <Link to="/bookmarks">
+          <button><FiBookmark /> Закладки</button>
+        </Link>
+
         <span>
           <Link to="/settings" onClick={openModalPay}>
             <button><BiRuble /> Донаты</button>
