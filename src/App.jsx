@@ -13,7 +13,6 @@ function App() {
         </div>
       }
     >
-
       <div className="app">
         <Navbar />
 

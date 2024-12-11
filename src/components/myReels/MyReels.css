@@ -1,0 +1,18 @@
+.my_reels {
+  width: 100%;
+  padding: 20px 0;
+}
+
+.empty_reels {
+  width: 100%;
+  height: 300px;
+  background-color: #232324;
+  border-radius: 10px;
+  padding: 24px;
+  color: #969c9d;
+  font-size: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+}
