@@ -175,7 +175,7 @@ const Navbar = () => {
       </div>
 
       <div className="avatar_menu_box">
-        <Link to="/u">
+        <Link to={`/u/${userInfo?._id}-${userInfo?.fullname}`}>
           <div className="avatar_myProfile">
             <Avatar
               size={45}

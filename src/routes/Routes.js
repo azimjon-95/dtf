@@ -44,7 +44,7 @@ const routes = [
   { path: "/settings/general", element: <General />, protected: false },
   { path: "/drafts", element: <DraftList />, protected: false },
   { path: "/bookmarks", element: <BookmarkComponent />, protected: false },
-  { path: "/u", element: <UserProfile />, protected: false },
+  { path: "/u/:id", element: <UserProfile />, protected: false },
 ];
 
 export default routes;

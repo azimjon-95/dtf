@@ -1,11 +1,12 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import './style.css'
 import Layout from "../../components/layout/Layout";
 import { useSelector } from "react-redux";
 import { LuSettings } from "react-icons/lu";
+import { BsChevronDown, BsChevronUp } from "react-icons/bs";
 import { PiImageSquareBold } from "react-icons/pi";
 import { GoPencil } from "react-icons/go";
-import { Link } from "react-router-dom";
+import { Dropdown, Menu } from 'antd';
 
 const UserProfile = () => {
     const [activeTab, setActiveTab] = useState("posts");
@@ -13,9 +14,18 @@ const UserProfile = () => {
     const [position, setPosition] = useState({ x: 0, y: 0 });
     const fileInputRef = useRef(null);
     const [isEditing, setIsEditing] = useState(false); // Tahrirlash holati
-    const userData = useSelector((i) => i);
+    const userData = useSelector((i) => i.userInfo);
 
-    console.log(userData);
+    const [selectedCategory, setSelectedCategory] = useState('Свежее');
+    const [selectedOpen, setSelectedOpen] = useState(false);
+
+    const handleMenuClick = ({ key }) => {
+        setSelectedCategory(key);
+    };
+
+    const handleDropdownVisibleChange = (visible) => {
+        setSelectedOpen(visible);
+    };
 
     const handleButtonClick = () => {
         fileInputRef.current.click(); // Fayl tanlash oynasini ochish
@@ -81,26 +91,39 @@ const UserProfile = () => {
     };
 
 
+    const joinDate = userData?.createdAt;
+    const formattedDate = joinDate ? new Date(joinDate).toLocaleDateString('ru-RU') : '';
 
     const profile = {
-        name: "Azimjon Mamutaliyev",
-        joinDate: "02.12.2024",
-        avatar: "https://via.placeholder.com/100",
+        name: userData?.fullname || "",
+        joinDate: formattedDate,
+        avatar: userData?.avatar,
     };
 
-    const posts = [
-        {
-            id: 1,
-            author: 'Azimjon Mamutaliyev',
-            date: '3 дек',
-            avatar: 'https://via.placeholder.com/40',
-            image: 'https://via.placeholder.com/600',
-            likes: 1,
-            comments: 1,
-            views: 229,
-        },
-        // Yangi postlar qo'shish uchun shu yerga yozing...
-    ];
+
+    // HTML title ni o'zgartirish
+    useEffect(() => {
+        if (userData?.fullname) {
+            document.title = userData.fullname;
+        } else {
+            document.title = "DTF - игры, кино, сериалы, разработка, сообщество";
+        }
+    }, [userData?.fullname]);
+
+
+    const menu = (
+        <Menu
+            onClick={handleMenuClick}
+            items={[
+                { key: 'Свежее', label: 'Свежее' },
+                { key: 'Популярное', label: 'Популярное' },
+                { key: 'Топ за месяц', label: 'Топ за месяц' },
+                { key: 'Топ за год', label: 'Топ за год' },
+            ]}
+        />
+    );
+
+
     return (
         <Layout>
             <div className="UserProfile-continer">
@@ -154,13 +177,15 @@ const UserProfile = () => {
                             </div>
                         )}
                         <div className="profile-info">
-                            <img src={profile.avatar} alt="User Avatar" className="avatar" />
+
+                            <img src={userData?.avatar} alt="User Avatar" className="avatar" />
+
                             <h2>{profile.name}</h2>
                             <span>+1 <p> c {profile.joinDate}</p></span>
 
                             <strong>
-                                <p>0 подписчиков</p>
-                                <p>0 подписок</p>
+                                <p>{userData?.followers?.length} подписчиков</p>
+                                <p>{userData?.following?.length} подписок</p>
                             </strong>
 
                             <div className="buttons">
@@ -181,30 +206,38 @@ const UserProfile = () => {
                         </div>
                     </div>
 
-                    <div className="content">
-                        {activeTab === 'posts' && <div className="box">Контент Постов</div>}
-                        {activeTab === 'comments' && <div className="box">Контент Комментариев</div>}
-                    </div>
 
-                    {/* <div className="post-list">
-                        {posts.map((post) => (
-                            <div key={post.id} className="post-card">
-                                <div className="post-header">
-                                    <img src={post.avatar} alt="User Avatar" className="post-avatar" />
-                                    <div>
-                                        <h3>{post.author}</h3>
-                                        <p>{post.date}</p>
-                                    </div>
-                                </div>
-                                <img src={post.image} alt="Post Content" className="post-image" />
-                                <div className="post-footer">
-                                    <p>{post.likes} ❤️</p>
-                                    <p>{post.comments} 💬</p>
-                                    <p>{post.views} 👁️</p>
-                                </div>
-                            </div>
-                        ))}
-                    </div> */}
+                    {activeTab === 'posts' && <div className='profile-posts'>
+                        <div style={{ marginBottom: '5px' }}>
+                            <Dropdown
+                                overlay={menu}
+                                trigger={['click']}
+                                onOpenChange={handleDropdownVisibleChange}
+                            >
+                                <button className="profile-select" >
+                                    {selectedCategory} {selectedOpen ? < BsChevronUp /> : <BsChevronDown />}
+                                </button>
+                            </Dropdown>
+                        </div>
+                        <div className="profile-card_main"><p>Здесь пока ничего нет</p></div>
+                    </div>}
+                    {activeTab === 'comments' && <div className='profile-posts'>
+                        <div style={{ marginBottom: '5px' }}>
+                            <Dropdown
+                                overlay={menu}
+                                trigger={['click']}
+                                onOpenChange={handleDropdownVisibleChange}
+                            >
+                                <button className="profile-select" >
+                                    {selectedCategory} {selectedOpen ? < BsChevronUp /> : <BsChevronDown />}
+                                </button>
+                            </Dropdown>
+                        </div>
+                        <div className="profile-card_main"><p>Здесь пока ничего нет</p></div>
+                    </div>}
+
+
+
                 </div>
             </div>
         </Layout>
