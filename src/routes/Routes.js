@@ -12,8 +12,12 @@ import NotificationSettings from "../pages/notificationSettings/NotificationSett
 import Blog from "../pages/blog/Blog";
 import Feeds from "../pages/feeds/Feeds";
 import General from "../pages/general/General";
+<<<<<<< HEAD
 import MyReels from "../components/myReels/MyReels";
 import Message from "../components/message/Message";
+=======
+import DraftList from "../pages/draftList/DraftList";
+>>>>>>> 155ddef23412088e7b4409bf6452e0a60d72ea03
 
 // Lazy-load pages
 
@@ -39,6 +43,7 @@ const routes = [
   { path: "/settings/blog", element: <Blog />, protected: false },
   { path: "/settings/feeds", element: <Feeds />, protected: false },
   { path: "/settings/general", element: <General />, protected: false },
+  { path: "/drafts", element: <DraftList />, protected: false },
 ];
 
 export default routes;

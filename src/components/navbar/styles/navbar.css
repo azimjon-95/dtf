@@ -173,3 +173,309 @@
     top: -6px;
     cursor: pointer;
 }
+
+.notificationList_modal {
+    border: .5px solid #8080804e;
+    width: 350px;
+    /* padding: 10px 20px; */
+    background: #1F1F1F;
+    color: #ffffff !important;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.ant-list {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 15px !important;
+    color: rgba(0, 0, 0, 0.88);
+    font-size: 14px;
+    line-height: 1.5714285714285714;
+    list-style: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    position: relative !important;
+}
+
+.notificationList_navbar {
+    width: 100%;
+    height: 44px;
+    background: #232324;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
+}
+
+.notificationList_navbar>button {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    background: transparent;
+    border: none;
+    color: #fff;
+}
+
+.notificationList_navbar>button:hover {
+    background: #51515148;
+}
+
+.notificationList_navbar h3 {
+    font: 500 15px / 22px Roboto, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif;
+    vertical-align: baseline;
+    cursor: auto;
+    text-align: start;
+    color: rgb(201, 204, 207);
+    background-color: rgb(35, 35, 36);
+}
+
+.notificationList_Setting_box {
+    border: .5px solid #8080804e;
+    width: 300px;
+    padding: 10px;
+    background: #1F1F1F;
+    color: #ffffff !important;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.avatar_user {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: #C9CCCF;
+}
+
+.avatar_user>svg {
+    font-size: 14px;
+}
+
+.notificationList_Setting_box button {
+    width: 100%;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font: 400 15px / 22px Roboto, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif;
+    vertical-align: baseline;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: rgb(201, 204, 207);
+    cursor: pointer;
+    text-align: start;
+    background: transparent;
+    border: none;
+    /* text-indent: 1px;                                                                                             */
+    z-index: 10;
+}
+
+
+
+
+.avatar_modal {
+    border: .5px solid #8080804e;
+    width: 320px;
+    /* padding: 10px 20px; */
+    background: #1F1F1F;
+    color: #ffffff !important;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.avatar__navbar {
+    width: 100%;
+    height: 37px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
+}
+
+.avatar__navbar h3 {
+    font: 500 15px / 22px Roboto, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif;
+    vertical-align: baseline;
+    cursor: auto;
+    text-align: start;
+    color: rgb(201, 204, 207);
+    background-color: rgb(35, 35, 36);
+}
+
+.avatar_myProfile {
+    width: 100%;
+    height: 54px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border-radius: 8px;
+    padding: 6px 8px;
+}
+
+.avatar_myProfile>span>h1 {
+    font: 500 20px / 28px Roboto, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif;
+    vertical-align: baseline;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #c9cccf;
+    text-decoration-color: #c9cccf;
+    text-decoration-style: solid;
+    text-decoration-thickness: auto;
+}
+
+.avatar_myProfile>span>p {
+    font: 400 15px / 22px Roboto, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif;
+    vertical-align: baseline;
+    color: #969c9d;
+    text-decoration-color: #969c9d;
+    text-decoration-style: solid;
+    text-decoration-thickness: auto;
+}
+
+.avatar_menu_box {
+    width: 100%;
+    padding: 7px 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.avatar_menu_box>a {
+    width: 100%;
+}
+
+.avatar_menu_box>a>button {
+    width: 100%;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font: 400 16px / 26px Roboto, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif;
+    vertical-align: baseline;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #c9cccf;
+    text-decoration-color: rgb(201, 204, 207);
+    text-decoration-style: solid;
+    text-decoration-thickness: auto;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    border-radius: 8px;
+    padding: 6px 8px;
+}
+
+.avatar_menu_box>a>button:hover {
+    background-color: #2c2c2c;
+}
+
+
+.avatar_menu_box>button {
+    width: 100%;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font: 400 16px / 26px Roboto, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif;
+    vertical-align: baseline;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #c9cccf;
+    text-decoration-color: rgb(201, 204, 207);
+    text-decoration-style: solid;
+    text-decoration-thickness: auto;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    border-radius: 8px;
+    padding: 6px 8px;
+}
+
+.avatar_myProfile:hover {
+    background-color: #2c2c2c;
+}
+
+.avatar_menu_box>button:hover {
+    background-color: #2c2c2c;
+}
+
+.avatar_menu_box>span {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 10px;
+}
+
+.avatar_menu_box>span b>svg {
+    font-size: 23px;
+    color: #c9cccf;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.avatar_menu_box>span p {
+    font: 500 12px / 13px Roboto, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif;
+    overflow: visible;
+    background: none 0% 0% / auto repeat scroll padding-box border-box #2c2c2c;
+    padding: 8px 12px;
+    align-items: center;
+    border-radius: 8px;
+    color: rgb(201, 204, 207);
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
+    white-space: nowrap;
+    text-decoration-color: rgb(201, 204, 207);
+    text-decoration-style: solid;
+    text-decoration-thickness: auto;
+}
+
+.avatar_menu_box>button>svg {
+    font-size: 20px;
+}
+
+.avatar_menu_box>span>a>button>svg {
+    font-size: 20px !important;
+}
+
+.avatar_menu_box>span:hover {
+    border-radius: 8px;
+    background-color: #2c2c2c;
+}
+
+.avatar_menu_box>span>a {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.avatar_menu_box>span>a>button {
+    width: 50%;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    border: none;
+    gap: 9px;
+    font: 400 16px / 26px Roboto, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif;
+    vertical-align: baseline;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: rgb(201, 204, 207);
+    text-decoration-color: rgb(201, 204, 207);
+    text-decoration-style: solid;
+    text-decoration-thickness: auto;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 8px;
+    padding: 6px 8px;
+}
