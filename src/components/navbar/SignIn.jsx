@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { FiChevronLeft } from "react-icons/fi";
 import { IoMdClose } from "react-icons/io";
-import { IoLogoApple } from "react-icons/io";
 import { MdOutlineMail } from "react-icons/md";
 import { message } from "antd";
 
@@ -16,12 +15,16 @@ import {
   sendEmailVerification,
   signInWithEmailAndPassword,
   signInWithPopup,
-  OAuthProvider,
 } from "firebase/auth";
+
+import { useDispatch, useSelector } from "react-redux";
+import { auth as authSlice } from "../../context/authSlice";
 
 import "./styles/signIn.css";
 
 function SignIn({ setShowModal }) {
+  const dipatch = useDispatch();
+  const authValue = useSelector((s) => s.auth);
   const [activeModal, setActiveModal] = useState("mainModal");
   const closeModal = () => setShowModal(null);
 
@@ -39,8 +42,8 @@ function SignIn({ setShowModal }) {
       const { data } = await axios.post("/users/register", userInfo);
 
       localStorage.setItem("access_token", data.innerData.access_token);
-      localStorage.setItem("user", JSON.stringify(data.innerData.user));
       message[data.status](data.message);
+      dipatch(authSlice(!authValue));
       closeModal();
     } catch (error) {
       message.error(error.response?.data?.message);
@@ -63,18 +66,18 @@ function SignIn({ setShowModal }) {
 
       if (user.emailVerified) {
         let res = await axios.post("/users/login", obj);
-        console.log(res.data);
 
         localStorage.setItem("access_token", res.data.innerData.access_token);
-        localStorage.setItem("user", JSON.stringify(res.data.innerData.user));
         message[res.data.status](res.data.message);
+        dipatch(authSlice(!authValue));
         closeModal();
       } else {
         message.error("Подтвердите электронную почту!");
       }
     } catch (error) {
-      console.log(error);
-
+      if (error.code && error.code.startsWith("auth/")) {
+        return message.error("Логин или пароль неверный");
+      }
       message.error(error.response?.data?.message);
     }
   };
@@ -97,38 +100,14 @@ function SignIn({ setShowModal }) {
 
       await sendEmailVerification(user);
 
-      localStorage.setItem("access_token", res.data.innerData.access_token);
-      localStorage.setItem("user", JSON.stringify(res.data.innerData.user));
+      // localStorage.setItem("access_token", res.data.innerData.access_token);
       // message[res.data.status](res.data.message);
       message.success("Подтвердите электронную почту!");
       // closeModal();
+      dipatch(authSlice(!authValue));
       setActiveModal("emailModal");
     } catch (error) {
-      console.log(".>", error);
       message.error(error.response?.data?.message);
-    }
-  };
-
-  const registerWithApple = async () => {
-    const auth = getAuth();
-    const provider = new OAuthProvider("apple.com");
-
-    try {
-      const result = await signInWithPopup(auth, provider);
-
-      // Foydalanuvchi ma'lumotlari
-      const user = result.user;
-      console.log("Foydalanuvchi:", user);
-
-      // Foydalanuvchi ma'lumotlarini serverga yuborish (optional)
-      // await axios.post("/api/saveUser", user);
-    } catch (error) {
-      console.error("Xato yuz berdi:", error.message);
-
-      // Xatoni foydalanuvchiga ko‘rsatish (optional)
-      alert(
-        "Apple orqali tizimga kirishda muammo yuz berdi. Iltimos, qayta urinib ko‘ring."
-      );
     }
   };
 

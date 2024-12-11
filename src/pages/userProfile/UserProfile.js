@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import './style.css'
 import Layout from "../../components/layout/Layout";
+import { useSelector } from "react-redux";
 import { LuSettings } from "react-icons/lu";
 import { PiImageSquareBold } from "react-icons/pi";
 import { GoPencil } from "react-icons/go";
@@ -12,6 +13,9 @@ const UserProfile = () => {
     const [position, setPosition] = useState({ x: 0, y: 0 });
     const fileInputRef = useRef(null);
     const [isEditing, setIsEditing] = useState(false); // Tahrirlash holati
+    const userData = useSelector((i) => i);
+
+    console.log(userData);
 
     const handleButtonClick = () => {
         fileInputRef.current.click(); // Fayl tanlash oynasini ochish

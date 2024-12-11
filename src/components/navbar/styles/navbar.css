@@ -1,481 +1,525 @@
 .Navbar {
-    background: #26282B;
-    width: 100%;
-    height: 60px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
+  background: #26282b;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.navbar-modal-backdrop {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(5px);
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+}
+
+.navbar-modal-content {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  z-index: 10012;
+  padding: 20px;
+}
+
+.close-modal-btn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .Navbar h1 {
-    color: #C9CCCF;
-    font-weight: 800;
-    font-size: 35px;
-    -webkit-user-select: none;
-    user-select: none;
-    cursor: pointer;
+  color: #c9cccf;
+  font-weight: 800;
+  font-size: 35px;
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: pointer;
 }
 
 .nav_links {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 }
 
-
-.nav_links>button {
-    font: 500 17px / 17px Roboto, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif;
-    overflow: visible;
-    border: none;
-    background: none 0% 0% / auto repeat scroll padding-box border-box rgb(44, 44, 44);
-    padding: 0px 16px;
-    border-radius: 42px;
-    color: rgb(201, 204, 207);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    height: 42px;
-    justify-content: center;
-    gap: 8px;
-    white-space: nowrap;
-    box-shadow: rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.22) 0px 1px 4px 0px;
-    text-decoration-color: rgb(201, 204, 207);
-    text-decoration-style: solid;
-    text-decoration-thickness: auto;
+.nav_links > button {
+  font: 500 17px / 17px Roboto, system-ui, -apple-system, "Segoe UI", Roboto,
+    Ubuntu, Cantarell, "Noto Sans", sans-serif;
+  overflow: visible;
+  border: none;
+  background: none 0% 0% / auto repeat scroll padding-box border-box
+    rgb(44, 44, 44);
+  padding: 0px 16px;
+  border-radius: 42px;
+  color: rgb(201, 204, 207);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  height: 42px;
+  justify-content: center;
+  gap: 8px;
+  white-space: nowrap;
+  box-shadow: rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset,
+    rgba(0, 0, 0, 0.22) 0px 1px 4px 0px;
+  text-decoration-color: rgb(201, 204, 207);
+  text-decoration-style: solid;
+  text-decoration-thickness: auto;
 }
 
 .search-box {
-    position: relative;
+  position: relative;
 }
 
 .nav_links button:last-child {
-    background: #418AF4;
+  background: #418af4;
 }
 
-.nav_links button>svg {
-    font-size: 21px;
+.nav_links button > svg {
+  font-size: 21px;
 }
 
 .search-bar {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    height: 46px;
-    position: absolute;
-    top: -24px;
-    right: 20px;
-    width: 0;
-    overflow: hidden;
-    transition: width 0.5s ease-in-out, opacity 0.5s ease-in-out;
-    opacity: 0;
-    z-index: 10;
-    font-size: 17px;
-    font: 400 17px / 26px Roboto, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif;
-    padding: 0px 11px;
-    border-radius: 10px;
-    color: #C9CCCF;
-    box-shadow: rgba(255, 255, 255, 0.08) 0px 0px 0px 3px;
-    cursor: default;
-    border: 0.666667px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  height: 46px;
+  position: absolute;
+  top: -24px;
+  right: 20px;
+  width: 0;
+  overflow: hidden;
+  transition: width 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  opacity: 0;
+  z-index: 10;
+  font-size: 17px;
+  font: 400 17px / 26px Roboto, system-ui, -apple-system, "Segoe UI", Roboto,
+    Ubuntu, Cantarell, "Noto Sans", sans-serif;
+  padding: 0px 11px;
+  border-radius: 10px;
+  color: #c9cccf;
+  box-shadow: rgba(255, 255, 255, 0.08) 0px 0px 0px 3px;
+  cursor: default;
+  border: 0.666667px solid rgba(255, 255, 255, 0.1);
 }
 
 .search-bar_none {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    height: 46px;
-    position: absolute;
-    top: -13px;
-    right: 20px;
-    width: 0;
-    overflow: hidden;
-    transition: width 0.5s ease-in-out, opacity 0.5s ease-in-out;
-    opacity: 0;
-    font-size: 17px;
-    font: 400 17px / 26px Roboto, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif;
-    padding: 0px 11px;
-    border-radius: 10px;
-    color: #C9CCCF;
-    box-shadow: rgba(255, 255, 255, 0.08) 0px 0px 0px 3px;
-    cursor: default;
-    border: 0.666667px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  height: 46px;
+  position: absolute;
+  top: -13px;
+  right: 20px;
+  width: 0;
+  overflow: hidden;
+  transition: width 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  opacity: 0;
+  font-size: 17px;
+  font: 400 17px / 26px Roboto, system-ui, -apple-system, "Segoe UI", Roboto,
+    Ubuntu, Cantarell, "Noto Sans", sans-serif;
+  padding: 0px 11px;
+  border-radius: 10px;
+  color: #c9cccf;
+  box-shadow: rgba(255, 255, 255, 0.08) 0px 0px 0px 3px;
+  cursor: default;
+  border: 0.666667px solid rgba(255, 255, 255, 0.1);
 }
 
 .search-bar_icon {
-    color: #c9cccf;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    white-space: nowrap;
-    text-decoration-color: #c9cccf;
-    text-decoration-style: solid;
-    text-decoration-thickness: auto;
+  color: #c9cccf;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  text-decoration-color: #c9cccf;
+  text-decoration-style: solid;
+  text-decoration-thickness: auto;
 
-    background: transparent !important;
-    border: none !important;
+  background: transparent !important;
+  border: none !important;
 }
 
 .search-bar_icon svg {
-    font-size: 22px !important;
+  font-size: 22px !important;
 }
 
 .search-bar input {
-    font-size: 17px;
-    color: #C9CCCF;
-
+  font-size: 17px;
+  color: #c9cccf;
 }
 
 .search-bar input::placeholder {
-    color: #C9CCCF;
-    font-size: 17px;
+  color: #c9cccf;
+  font-size: 17px;
 }
 
-.search-bar>svg {
-    font-size: 20px;
-    color: #C9CCCF;
+.search-bar > svg {
+  font-size: 20px;
+  color: #c9cccf;
 }
 
 .search-bar input {
-    border: none;
-    outline: none;
-    background: transparent;
-    flex-grow: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  flex-grow: 1;
 }
 
 .search-bar.show {
-    width: 270px;
-    opacity: 1;
+  width: 270px;
+  opacity: 1;
 }
 
 .notifications_navbar {
-    font-size: 25px;
-    display: flex;
-    align-items: center;
-    color: #C9CCCF;
-    justify-content: center;
-    position: relative;
+  font-size: 25px;
+  display: flex;
+  align-items: center;
+  color: #c9cccf;
+  justify-content: center;
+  position: relative;
 }
 
 .notifications_navbar_news {
-    font: 400 11px / 18px Roboto, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif;
-    padding: 0px 5px;
-    vertical-align: baseline;
-    background-color: rgb(214, 51, 62);
-    border-radius: 4px;
-    color: rgb(255, 255, 255);
-    height: 18px;
-    width: 16.1771px;
-    position: absolute;
-    left: 11px;
-    top: -6px;
-    cursor: pointer;
+  font: 400 11px / 18px Roboto, system-ui, -apple-system, "Segoe UI", Roboto,
+    Ubuntu, Cantarell, "Noto Sans", sans-serif;
+  padding: 0px 5px;
+  vertical-align: baseline;
+  background-color: rgb(214, 51, 62);
+  border-radius: 4px;
+  color: rgb(255, 255, 255);
+  height: 18px;
+  width: 16.1771px;
+  position: absolute;
+  left: 11px;
+  top: -6px;
+  cursor: pointer;
 }
 
 .notificationList_modal {
-    border: .5px solid #8080804e;
-    width: 350px;
-    /* padding: 10px 20px; */
-    background: #1F1F1F;
-    color: #ffffff !important;
-    border-radius: 10px;
-    overflow: hidden;
+  border: 0.5px solid #8080804e;
+  width: 350px;
+  /* padding: 10px 20px; */
+  background: #1f1f1f;
+  color: #ffffff !important;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 .ant-list {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 15px !important;
-    color: rgba(0, 0, 0, 0.88);
-    font-size: 14px;
-    line-height: 1.5714285714285714;
-    list-style: none;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-    position: relative !important;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 15px !important;
+  color: rgba(0, 0, 0, 0.88);
+  font-size: 14px;
+  line-height: 1.5714285714285714;
+  list-style: none;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  position: relative !important;
 }
 
 .notificationList_navbar {
-    width: 100%;
-    height: 44px;
-    background: #232324;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 15px;
+  width: 100%;
+  height: 44px;
+  background: #232324;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15px;
 }
 
-.notificationList_navbar>button {
-    height: 30px;
-    width: 30px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 24px;
-    background: transparent;
-    border: none;
-    color: #fff;
+.notificationList_navbar > button {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  background: transparent;
+  border: none;
+  color: #fff;
 }
 
-.notificationList_navbar>button:hover {
-    background: #51515148;
+.notificationList_navbar > button:hover {
+  background: #51515148;
 }
 
 .notificationList_navbar h3 {
-    font: 500 15px / 22px Roboto, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif;
-    vertical-align: baseline;
-    cursor: auto;
-    text-align: start;
-    color: rgb(201, 204, 207);
-    background-color: rgb(35, 35, 36);
+  font: 500 15px / 22px Roboto, system-ui, -apple-system, "Segoe UI", Roboto,
+    Ubuntu, Cantarell, "Noto Sans", sans-serif;
+  vertical-align: baseline;
+  cursor: auto;
+  text-align: start;
+  color: rgb(201, 204, 207);
+  background-color: rgb(35, 35, 36);
 }
 
 .notificationList_Setting_box {
-    border: .5px solid #8080804e;
-    width: 300px;
-    padding: 10px;
-    background: #1F1F1F;
-    color: #ffffff !important;
-    border-radius: 10px;
-    overflow: hidden;
+  border: 0.5px solid #8080804e;
+  width: 300px;
+  padding: 10px;
+  background: #1f1f1f;
+  color: #ffffff !important;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 .avatar_user {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    color: #C9CCCF;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #c9cccf;
 }
 
-.avatar_user>svg {
-    font-size: 14px;
+.avatar_user > svg {
+  font-size: 14px;
 }
 
 .notificationList_Setting_box button {
-    width: 100%;
-    height: 30px;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font: 400 15px / 22px Roboto, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif;
-    vertical-align: baseline;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    color: rgb(201, 204, 207);
-    cursor: pointer;
-    text-align: start;
-    background: transparent;
-    border: none;
-    /* text-indent: 1px;                                                                                             */
-    z-index: 10;
+  width: 100%;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font: 400 15px / 22px Roboto, system-ui, -apple-system, "Segoe UI", Roboto,
+    Ubuntu, Cantarell, "Noto Sans", sans-serif;
+  vertical-align: baseline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: rgb(201, 204, 207);
+  cursor: pointer;
+  text-align: start;
+  background: transparent;
+  border: none;
+  /* text-indent: 1px;                                                                                             */
+  z-index: 10;
 }
 
-
-
-
 .avatar_modal {
-    border: .5px solid #8080804e;
-    width: 320px;
-    /* padding: 10px 20px; */
-    background: #1F1F1F;
-    color: #ffffff !important;
-    border-radius: 10px;
-    overflow: hidden;
+  border: 0.5px solid #8080804e;
+  width: 320px;
+  /* padding: 10px 20px; */
+  background: #1f1f1f;
+  color: #ffffff !important;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 .avatar__navbar {
-    width: 100%;
-    height: 37px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 15px;
+  width: 100%;
+  height: 37px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15px;
 }
 
 .avatar__navbar h3 {
-    font: 500 15px / 22px Roboto, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif;
-    vertical-align: baseline;
-    cursor: auto;
-    text-align: start;
-    color: rgb(201, 204, 207);
-    background-color: rgb(35, 35, 36);
+  font: 500 15px / 22px Roboto, system-ui, -apple-system, "Segoe UI", Roboto,
+    Ubuntu, Cantarell, "Noto Sans", sans-serif;
+  vertical-align: baseline;
+  cursor: auto;
+  text-align: start;
+  color: rgb(201, 204, 207);
+  background-color: rgb(35, 35, 36);
 }
 
 .avatar_myProfile {
-    width: 100%;
-    height: 54px;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    border-radius: 8px;
-    padding: 6px 8px;
+  width: 100%;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border-radius: 8px;
+  padding: 6px 8px;
 }
 
-.avatar_myProfile>span>h1 {
-    font: 500 20px / 28px Roboto, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif;
-    vertical-align: baseline;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    color: #c9cccf;
-    text-decoration-color: #c9cccf;
-    text-decoration-style: solid;
-    text-decoration-thickness: auto;
+.avatar_myProfile > span > h1 {
+  font: 500 20px / 28px Roboto, system-ui, -apple-system, "Segoe UI", Roboto,
+    Ubuntu, Cantarell, "Noto Sans", sans-serif;
+  vertical-align: baseline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #c9cccf;
+  text-decoration-color: #c9cccf;
+  text-decoration-style: solid;
+  text-decoration-thickness: auto;
 }
 
-.avatar_myProfile>span>p {
-    font: 400 15px / 22px Roboto, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif;
-    vertical-align: baseline;
-    color: #969c9d;
-    text-decoration-color: #969c9d;
-    text-decoration-style: solid;
-    text-decoration-thickness: auto;
+.avatar_myProfile > span > p {
+  font: 400 15px / 22px Roboto, system-ui, -apple-system, "Segoe UI", Roboto,
+    Ubuntu, Cantarell, "Noto Sans", sans-serif;
+  vertical-align: baseline;
+  color: #969c9d;
+  text-decoration-color: #969c9d;
+  text-decoration-style: solid;
+  text-decoration-thickness: auto;
 }
 
 .avatar_menu_box {
-    width: 100%;
-    padding: 7px 8px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 4px;
+  width: 100%;
+  padding: 7px 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 4px;
 }
 
-.avatar_menu_box>a {
-    width: 100%;
+.avatar_menu_box > a {
+  width: 100%;
 }
 
-.avatar_menu_box>a>button {
-    width: 100%;
-    height: 45px;
-    display: flex;
-    align-items: center;
-    gap: 9px;
-    font: 400 16px / 26px Roboto, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif;
-    vertical-align: baseline;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    color: #c9cccf;
-    text-decoration-color: rgb(201, 204, 207);
-    text-decoration-style: solid;
-    text-decoration-thickness: auto;
-    cursor: pointer;
-    background-color: rgba(0, 0, 0, 0);
-    border: none;
-    border-radius: 8px;
-    padding: 6px 8px;
+.avatar_menu_box > a > button {
+  width: 100%;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font: 400 16px / 26px Roboto, system-ui, -apple-system, "Segoe UI", Roboto,
+    Ubuntu, Cantarell, "Noto Sans", sans-serif;
+  vertical-align: baseline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #c9cccf;
+  text-decoration-color: rgb(201, 204, 207);
+  text-decoration-style: solid;
+  text-decoration-thickness: auto;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  border-radius: 8px;
+  padding: 6px 8px;
 }
 
-.avatar_menu_box>a>button:hover {
-    background-color: #2c2c2c;
+.avatar_menu_box > a > button:hover {
+  background-color: #2c2c2c;
 }
 
-
-.avatar_menu_box>button {
-    width: 100%;
-    height: 45px;
-    display: flex;
-    align-items: center;
-    gap: 9px;
-    font: 400 16px / 26px Roboto, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif;
-    vertical-align: baseline;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    color: #c9cccf;
-    text-decoration-color: rgb(201, 204, 207);
-    text-decoration-style: solid;
-    text-decoration-thickness: auto;
-    cursor: pointer;
-    background-color: rgba(0, 0, 0, 0);
-    border: none;
-    border-radius: 8px;
-    padding: 6px 8px;
+.avatar_menu_box > button {
+  width: 100%;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font: 400 16px / 26px Roboto, system-ui, -apple-system, "Segoe UI", Roboto,
+    Ubuntu, Cantarell, "Noto Sans", sans-serif;
+  vertical-align: baseline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #c9cccf;
+  text-decoration-color: rgb(201, 204, 207);
+  text-decoration-style: solid;
+  text-decoration-thickness: auto;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  border-radius: 8px;
+  padding: 6px 8px;
 }
 
 .avatar_myProfile:hover {
-    background-color: #2c2c2c;
+  background-color: #2c2c2c;
 }
 
-.avatar_menu_box>button:hover {
-    background-color: #2c2c2c;
+.avatar_menu_box > button:hover {
+  background-color: #2c2c2c;
 }
 
-.avatar_menu_box>span {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-right: 10px;
+.avatar_menu_box > span {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 10px;
 }
 
-.avatar_menu_box>span b>svg {
-    font-size: 23px;
-    color: #c9cccf;
-    cursor: pointer;
-    margin-top: 5px;
+.avatar_menu_box > span b > svg {
+  font-size: 23px;
+  color: #c9cccf;
+  cursor: pointer;
+  margin-top: 5px;
 }
 
-.avatar_menu_box>span p {
-    font: 500 12px / 13px Roboto, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif;
-    overflow: visible;
-    background: none 0% 0% / auto repeat scroll padding-box border-box #2c2c2c;
-    padding: 8px 12px;
-    align-items: center;
-    border-radius: 8px;
-    color: rgb(201, 204, 207);
-    cursor: pointer;
-    display: inline-flex;
-    justify-content: center;
-    white-space: nowrap;
-    text-decoration-color: rgb(201, 204, 207);
-    text-decoration-style: solid;
-    text-decoration-thickness: auto;
+.avatar_menu_box > span p {
+  font: 500 12px / 13px Roboto, system-ui, -apple-system, "Segoe UI", Roboto,
+    Ubuntu, Cantarell, "Noto Sans", sans-serif;
+  overflow: visible;
+  background: none 0% 0% / auto repeat scroll padding-box border-box #2c2c2c;
+  padding: 8px 12px;
+  align-items: center;
+  border-radius: 8px;
+  color: rgb(201, 204, 207);
+  cursor: pointer;
+  display: inline-flex;
+  justify-content: center;
+  white-space: nowrap;
+  text-decoration-color: rgb(201, 204, 207);
+  text-decoration-style: solid;
+  text-decoration-thickness: auto;
 }
 
-.avatar_menu_box>button>svg {
-    font-size: 20px;
+.avatar_menu_box > button > svg {
+  font-size: 20px;
 }
 
-.avatar_menu_box>span>a>button>svg {
-    font-size: 20px !important;
+.avatar_menu_box > span > a > button > svg {
+  font-size: 20px !important;
 }
 
-.avatar_menu_box>span:hover {
-    border-radius: 8px;
-    background-color: #2c2c2c;
+.avatar_menu_box > span:hover {
+  border-radius: 8px;
+  background-color: #2c2c2c;
 }
 
-.avatar_menu_box>span>a {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.avatar_menu_box > span > a {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.avatar_menu_box>span>a>button {
-    width: 50%;
-    height: 45px;
-    display: flex;
-    align-items: center;
-    border: none;
-    gap: 9px;
-    font: 400 16px / 26px Roboto, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif;
-    vertical-align: baseline;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    color: rgb(201, 204, 207);
-    text-decoration-color: rgb(201, 204, 207);
-    text-decoration-style: solid;
-    text-decoration-thickness: auto;
-    cursor: pointer;
-    background-color: rgba(0, 0, 0, 0);
-    border-radius: 8px;
-    padding: 6px 8px;
+.avatar_menu_box > span > a > button {
+  width: 50%;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  border: none;
+  gap: 9px;
+  font: 400 16px / 26px Roboto, system-ui, -apple-system, "Segoe UI", Roboto,
+    Ubuntu, Cantarell, "Noto Sans", sans-serif;
+  vertical-align: baseline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: rgb(201, 204, 207);
+  text-decoration-color: rgb(201, 204, 207);
+  text-decoration-style: solid;
+  text-decoration-thickness: auto;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0);
+  border-radius: 8px;
+  padding: 6px 8px;
 }
