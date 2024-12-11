@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Dropdown, List, Button, Avatar, Menu } from "antd";
+import React, { useEffect, useState } from "react";
+import { Dropdown, List, Button, Avatar } from "antd";
 import { IoSearch, IoNotificationsOutline } from "react-icons/io5";
 import { BsChevronDown } from "react-icons/bs";
 import { GoPencil } from "react-icons/go";
@@ -16,12 +16,19 @@ import Editer from "./Editer";
 import SignIn from "./SignIn";
 import { Link } from "react-router-dom";
 import DarkModeSetting from "../../hooks/DarkModeSetting";
+import { useSelector } from "react-redux";
+import axios from "../../api";
 
 const Navbar = () => {
-  const [token] = useState(true);
+  const auth = useSelector((s) => s.auth);
+
+  const [token, setToken] = useState(null);
+  const [userInfo, setUserInfo] = useState(null);
   const [showSearch, setShowSearch] = useState(false);
   const [menuVisible, setMenuVisible] = useState(false);
-  const [showModal, setShowModal] = useState(null); // Modalni boshqarish uchun
+  const [showModal, setShowModal] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const [notifications, setNotifications] = useState([
     {
       id: 1,
@@ -33,27 +40,36 @@ const Navbar = () => {
     {
       id: 2,
       avatar: "https://via.placeholder.com/32",
-      content: "Zyxsch прокомментировал публикацию, на которую вы подписаны Salom",
+      content:
+        "Zyxsch прокомментировал публикацию, на которую вы подписаны Salom",
       date: "3 дек",
       read: false,
     },
     {
       id: 3,
       avatar: "https://via.placeholder.com/32",
-      content: "Y. Volchek прокомментировал публикацию, на которую вы подписаны",
+      content:
+        "Y. Volchek прокомментировал публикацию, на которую вы подписаны",
       date: "3 дек",
       read: false,
     },
     {
       id: 4,
       avatar: "https://via.placeholder.com/32",
-      content: "Flexboy1945 и ещё 5 человек прокомментировали публикацию, на которую вы подписаны",
+      content:
+        "Flexboy1945 и ещё 5 человек прокомментировали публикацию, на которую вы подписаны",
       date: "3 дек",
       read: false,
     },
   ]);
 
-  const toggleSearchBar = () => setShowSearch(!showSearch);
+  // check token
+  useEffect(() => {
+    const token = localStorage.getItem("access_token");
+    if (token) {
+      setToken(token);
+    }
+  }, [auth]);
 
   const openModal = (modalType) => setShowModal(modalType);
 
@@ -79,17 +95,23 @@ const Navbar = () => {
           // onClick={handleMarkAllAsRead}21`
           style={{ textAlign: "center", width: "100%" }}
         >
-          <LuSettings />  Настройки уведомлений
+          <LuSettings /> Настройки уведомлений
         </button>
       </Link>
     </div>
-  )
+  );
   const notificationList = (
     <div className="notificationList_modal">
       <div className="notificationList_navbar">
         <h3>Уведомления</h3>
-        <Dropdown overlay={notificationSetting} trigger={['click']} placement="bottomRight">
-          <button><BiDotsHorizontalRounded /></button>
+        <Dropdown
+          overlay={notificationSetting}
+          trigger={["click"]}
+          placement="bottomRight"
+        >
+          <button>
+            <BiDotsHorizontalRounded />
+          </button>
         </Dropdown>
       </div>
       <List
@@ -113,33 +135,36 @@ const Navbar = () => {
           </List.Item>
         )}
       />
-
     </div>
   );
 
-
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
   const openModalPay = (e) => {
-    e.preventDefault(); // Link navigatsiyasini to'xtatish
+    e.preventDefault();
     setIsModalOpen(true);
   };
 
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
+  const closeModal = () => setIsModalOpen(false);
 
-  const handleMenuClick = ({ key }) => {
+  const logOut = ({ key }) => {
     if (key === "logout") {
-      // Logout funksiyasini bu yerda amalga oshiring
-      console.log("Logout qilindi");
+      localStorage.removeItem("access_token");
+      window.location.reload();
     }
     setMenuVisible(false);
   };
 
+  // get user info
+  useEffect(() => {
+    if (token) {
+      axios
+        .get("/users/me")
+        .then((res) => setUserInfo(res?.data?.innerData))
+        .catch((err) => console.log(err));
+    }
+  }, [token]);
 
   const menu = (
-    <div onClick={handleMenuClick} className="avatar_modal">
+    <div className="avatar_modal">
       <div className="avatar__navbar">
         <h3>Мой профиль</h3>
       </div>
@@ -147,44 +172,59 @@ const Navbar = () => {
       <div className="avatar_menu_box">
         <Link to="/">
           <div className="avatar_myProfile">
-            <Avatar size={45}
-              style={{ cursor: "pointer", backgroundColor: "#87d068" }}
+            <Avatar
+              size={45}
+              src={userInfo?.avatar}
               onClick={(e) => e.preventDefault()}
             >
-              A
+              {!userInfo?.avatar ? userInfo?.fullname?.slice(0, 1) : ""}
             </Avatar>
             <span>
-              <h1>Azimjon Mamutaliyev</h1>
+              <h1>{userInfo?.fullname}</h1>
               <p>Личный блог</p>
             </span>
           </div>
         </Link>
         <Link to="/drafts">
-          <button ><GoPencil /> Черновики</button>
+          <button>
+            <GoPencil /> Черновики
+          </button>
         </Link>
-        <button><FiBookmark /> Закладки</button>
+        <button>
+          <FiBookmark /> Закладки
+        </button>
         <span>
           <Link to="/settings" onClick={openModalPay}>
-            <button><BiRuble /> Донаты</button>
+            <button>
+              <BiRuble /> Донаты
+            </button>
 
             <p>Подключить</p>
           </Link>
         </span>
         <span>
           <Link to="/settings">
-            <button><LuSettings /> Настройки</button>
+            <button>
+              <LuSettings /> Настройки
+            </button>
           </Link>
-          <Dropdown overlay={<DarkModeSetting />} trigger={['click']} placement="bottomRight">
-            <b><VscColorMode /></b>
+          <Dropdown
+            overlay={<DarkModeSetting />}
+            trigger={["click"]}
+            placement="bottomRight"
+          >
+            <b>
+              <VscColorMode />
+            </b>
           </Dropdown>
         </span>
-        <button><img width={20} src={diamond} alt="" /> Подписка Plus</button>
-        <button><MdLogout /> Выйти</button>
-
+        <button>
+          <img width={20} src={diamond} alt="" /> Подписка Plus
+        </button>
+        <button onClick={() => logOut({ key: "logout" })}>
+          <MdLogout /> Выйти
+        </button>
       </div>
-
-
-
 
       {/* Modal */}
       {isModalOpen && (
@@ -203,11 +243,9 @@ const Navbar = () => {
             }}
             onClick={closeModal} // Modalni orqaga bosganda yopish
           />
-
         </div>
       )}
     </div>
-
   );
   return (
     <div className="Navbar">
@@ -221,15 +259,22 @@ const Navbar = () => {
               <input type="text" placeholder="Поиск" />
             </div>
           ) : (
-            <button className="search-bar_icon" onClick={toggleSearchBar}>
+            <button
+              className="search-bar_icon"
+              onClick={() => setShowSearch(!showSearch)}
+            >
               <IoSearch />
             </button>
           )}
         </div>
 
         {/* Notifications */}
-        {token &&
-          <Dropdown overlay={notificationList} trigger={['click']} placement="bottomRight">
+        {token && (
+          <Dropdown
+            overlay={notificationList}
+            trigger={["click"]}
+            placement="bottomRight"
+          >
             <span className="notifications_navbar">
               <IoNotificationsOutline />
               {unreadCount > 0 && (
@@ -237,7 +282,7 @@ const Navbar = () => {
               )}
             </span>
           </Dropdown>
-        }
+        )}
         {/* Buttons */}
         <Button
           icon={<GoPencil />}
@@ -254,11 +299,13 @@ const Navbar = () => {
             open={menuVisible}
           >
             <div className="avatar_user">
-              <Avatar size={40}
-                style={{ cursor: "pointer", backgroundColor: "#87d068" }}
+              <Avatar
+                size={40}
+                style={{ cursor: "pointer" }}
                 onClick={(e) => e.preventDefault()}
+                src={userInfo?.avatar}
               >
-                A
+                {!userInfo?.avatar ? userInfo?.fullname?.slice(0, 1) : ""}
               </Avatar>
               <BsChevronDown />
             </div>
@@ -274,54 +321,17 @@ const Navbar = () => {
       {showModal === "login" && <SignIn setShowModal={setShowModal} />}
       {showModal === "write" && <Editer setShowModal={setShowModal} />}
 
-
       {/* Modal Content */}
       {isModalOpen && (
         <div>
           {/* Blur Background */}
-          <div
-            style={{
-              position: "fixed",
-              top: 0,
-              left: 0,
-              width: "100%",
-              height: "100%",
-              backdropFilter: "blur(5px)",
-              backgroundColor: "rgba(0, 0, 0, 0.3)",
-              zIndex: 1000,
-            }}
-            onClick={closeModal} // Modalni orqaga bosganda yopish
-          />
+          <div className="navbar-modal-backdrop" onClick={closeModal} />
 
           {/* Modal Content */}
-          <div
-            style={{
-              position: "fixed",
-              top: "50%",
-              left: "50%",
-              transform: "translate(-50%, -50%)",
-              width: "400px",
-              backgroundColor: "#fff",
-              borderRadius: "10px",
-              boxShadow: "0 4px 6px rgba(0,0,0,0.2)",
-              zIndex: 1001,
-              padding: "20px",
-            }}
-          >
+          <div className="navbar-modal-content">
             <h2>Подключить Донаты</h2>
             <p>Эта функциональность скоро будет доступна!</p>
-            <button
-              style={{
-                marginTop: "20px",
-                padding: "10px 20px",
-                backgroundColor: "#007bff",
-                color: "#fff",
-                border: "none",
-                borderRadius: "5px",
-                cursor: "pointer",
-              }}
-              onClick={closeModal}
-            >
+            <button className="close-modal-btn" onClick={closeModal}>
               Закрыть
             </button>
           </div>
@@ -332,4 +342,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-

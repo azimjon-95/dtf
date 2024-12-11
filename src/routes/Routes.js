@@ -12,12 +12,9 @@ import NotificationSettings from "../pages/notificationSettings/NotificationSett
 import Blog from "../pages/blog/Blog";
 import Feeds from "../pages/feeds/Feeds";
 import General from "../pages/general/General";
-<<<<<<< HEAD
 import MyReels from "../components/myReels/MyReels";
 import Message from "../components/message/Message";
-=======
 import DraftList from "../pages/draftList/DraftList";
->>>>>>> 155ddef23412088e7b4409bf6452e0a60d72ea03
 
 // Lazy-load pages
 
