@@ -7,9 +7,9 @@ const mainURL = axios.create({
 
 mainURL.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem("access_token"); // Tokenni localStorage'dan oling
+    const token = localStorage.getItem("access_token");
     if (token) {
-      config.headers.Authorization = `Bearer ${token}`; // Headerga tokenni qo‘shing
+      config.headers.Authorization = `Bearer ${token}`;
     }
     return config;
   },
