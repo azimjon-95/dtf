@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { IoMdClose } from "react-icons/io";
 import { FiMaximize2 } from "react-icons/fi";
 import { FiMoreHorizontal } from "react-icons/fi";
-import { Dropdown, Menu, Select, Input } from "antd";
+import { Dropdown, Menu, Select, Input, Avatar } from "antd";
 import { MdOutlineCheck } from "react-icons/md";
 import { TbWashDrycleanOff } from "react-icons/tb";
 import { FiPlus } from "react-icons/fi";
@@ -14,14 +14,13 @@ import PulseLoader from "react-spinners/PulseLoader";
 import { AiOutlineEye, AiOutlineHistory } from "react-icons/ai";
 import { TbRating18Plus } from "react-icons/tb";
 import "./styles/editer.css";
-
-
+import { useSelector } from "react-redux";
 
 const menuOptions = [
   {
     value: "nodata",
     label: "Без темы",
-    img: ""
+    img: "",
   },
   {
     value: "games",
@@ -135,6 +134,9 @@ const menuOptions = [
   },
 ];
 function Editer({ setShowModal }) {
+  const userInfo = useSelector((state) => state.userInfo);
+  console.log(userInfo);
+
   const [showModel, setShowModel] = useState(false);
   const [isCheck, setIsCheck] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
@@ -145,29 +147,28 @@ function Editer({ setShowModal }) {
 
   const handleInputChange = (e) => {
     setHasText(e.target.value.length > 0);
-    setInputTitle(e.target.value)
+    setInputTitle(e.target.value);
   };
-
 
   const closeModal = () => {
     setShowModal(null);
-    document.title = "DTF - игры, кино, сериалы, разработка, сообщество"
+    document.title = "DTF - игры, кино, сериалы, разработка, сообщество";
   };
   const menu = (
     <Menu className="custom-menu">
       <Menu.Item key="1">
         <span className="menu_item">
-          <AiOutlineEye />  Предпросмотр
+          <AiOutlineEye /> Предпросмотр
         </span>
       </Menu.Item>
 
-      <Menu.Item key="2" >
+      <Menu.Item key="2">
         <span className="menu_item">
           <TbRating18Plus /> Снять отметку 18+
         </span>
       </Menu.Item>
 
-      <Menu.Item key="3" >
+      <Menu.Item key="3">
         <span className="menu_item">
           <AiOutlineHistory /> История версий
         </span>
@@ -184,7 +185,6 @@ function Editer({ setShowModal }) {
     }
   }, [inputTitle]); // inputTitle o'zgarganda effect ishlaydi
 
-
   const plTexts = [
     "Однажды весной, в час небывалого...",
     "У меня есть мечта...",
@@ -195,7 +195,7 @@ function Editer({ setShowModal }) {
     "Мы живем, как будто времени не существует...",
     "На далёкой окраине маленького городка...",
     "И вдруг, как гром среди ясного неба...",
-    "Жизнь — это не то, что с нами происходит, а то, как мы на это реагируем..."
+    "Жизнь — это не то, что с нами происходит, а то, как мы на это реагируем...",
   ];
 
   const [placeholder, setPlaceholder] = useState("");
@@ -205,8 +205,6 @@ function Editer({ setShowModal }) {
     const randomText = plTexts[Math.floor(Math.random() * plTexts.length)];
     setPlaceholder(randomText);
   }, []); // Faqat bir marta bajariladi (komponent yuklanganda)
-
-
 
   const [isFirstInputVisible, setIsFirstInputVisible] = useState(false); // Birinchi input ko'rinishini boshqarish
 
@@ -224,14 +222,13 @@ function Editer({ setShowModal }) {
     ]);
   };
 
-
   useEffect(() => {
     if (elements.length >= 1 && !elements[elements.length - 1]?.inputValue) {
       setIsFirstInputVisible(true);
     } else {
-      setIsFirstInputVisible(false)
+      setIsFirstInputVisible(false);
     }
-  }, [elements])
+  }, [elements]);
 
   const handleInputChangese = (id, event) => {
     if (!event || !event.target) return;
@@ -246,11 +243,12 @@ function Editer({ setShowModal }) {
     );
   };
 
-
-
   const handleContainerClick = (e) => {
     // Agar ichidagi tugmalar yoki inputlar bosilmagan bo'lsa, addElement chaqiriladi
-    if (!e.target.closest(".input_btn") && !e.target.closest(".input_btn_nexts")) {
+    if (
+      !e.target.closest(".input_btn") &&
+      !e.target.closest(".input_btn_nexts")
+    ) {
       addElement();
     }
   };
@@ -261,10 +259,9 @@ function Editer({ setShowModal }) {
     }
   };
 
-
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
-  const [selectedValue, setSelectedValue] = useState('');
-  const [searchText, setSearchText] = useState('');
+  const [selectedValue, setSelectedValue] = useState("");
+  const [searchText, setSearchText] = useState("");
   const handleVisibleChange = (visible) => {
     setIsDropdownVisible(visible);
   };
@@ -277,15 +274,12 @@ function Editer({ setShowModal }) {
     setSearchText(e.target.value);
   };
 
-
-  const filteredOptions = menuOptions.filter(option =>
+  const filteredOptions = menuOptions.filter((option) =>
     option.label.toLowerCase().includes(searchText.toLowerCase())
   );
 
   const content = (
-    <div
-      className="dropdown-select"
-    >
+    <div className="dropdown-select">
       <Input
         placeholder="Поиск"
         value={searchText}
@@ -301,14 +295,28 @@ function Editer({ setShowModal }) {
       />
       <div className="dropdown-select-box">
         {filteredOptions.map((option, index) => (
-          <div key={index} onClick={() => handleSelect(option)} className="opntiomImage" style={{ display: 'flex', alignItems: 'center' }}>
-            {option.img === "" ? <TbWashDrycleanOff style={{ fontSize: "24px", marginRight: "10px" }} /> :
+          <div
+            key={index}
+            onClick={() => handleSelect(option)}
+            className="opntiomImage"
+            style={{ display: "flex", alignItems: "center" }}
+          >
+            {option.img === "" ? (
+              <TbWashDrycleanOff
+                style={{ fontSize: "24px", marginRight: "10px" }}
+              />
+            ) : (
               <img
                 src={option.img}
                 alt={option.label}
-                style={{ width: 26, height: 26, marginRight: 8, borderRadius: "50%" }}
+                style={{
+                  width: 26,
+                  height: 26,
+                  marginRight: 8,
+                  borderRadius: "50%",
+                }}
               />
-            }
+            )}
             {option.label}
           </div>
         ))}
@@ -317,127 +325,138 @@ function Editer({ setShowModal }) {
   );
   return (
     <div className="modal-editor" onClick={closeModal}>
-      <div className={`${showModel ? "modal_ed_overflow" : "modal_ed"}`} onClick={(e) => e.stopPropagation()}>
+      <div
+        className={`${showModel ? "modal_ed_overflow" : "modal_ed"}`}
+        onClick={(e) => e.stopPropagation()}
+      >
         <div className="dtf_modal_head">
-          {
-            showModel ?
-              <span onClick={() => setShowModel(false)}><FiMinimize2 /></span>
-              :
-              <span onClick={() => setShowModel(true)}><FiMaximize2 /></span>
-          }
-          <del onClick={closeModal}><IoMdClose /></del>
+          {showModel ? (
+            <span onClick={() => setShowModel(false)}>
+              <FiMinimize2 />
+            </span>
+          ) : (
+            <span onClick={() => setShowModel(true)}>
+              <FiMaximize2 />
+            </span>
+          )}
+          <del onClick={closeModal}>
+            <IoMdClose />
+          </del>
         </div>
         <div className="dtf_modal_box">
-
-
-          <div className="user_model-box">
-            <div className="user_model-bo_img">
-              <img src="" alt="" />
-            </div>
-            <span>
-              <b>Azimjon Mamutaliyev</b> <br />
-              <Dropdown
-                overlay={content}
-                trigger={["click"]}
-                title="Tanlang"
-                placement="bottom"
-                onOpenChange={handleVisibleChange}
-              >
-                <div>
-                  {selectedValue?.label || 'Без темы'} {isDropdownVisible ? <BsChevronUp /> : <BsChevronDown />}
-                  {
-                    selectedValue?.img === "" || selectedValue?.img === undefined ? "" :
+          <div>
+            <div className="user_model-box">
+              <Avatar src={userInfo?.avatar || ""} size={45} />
+              {/* <div className="user_model-bo_img">
+              <img src={userInfo?.avatar || ""} alt="" />
+            </div> */}
+              <span>
+                <b>{userInfo?.fullname || ""}</b> <br />
+                <Dropdown
+                  overlay={content}
+                  trigger={["click"]}
+                  title="Tanlang"
+                  placement="bottom"
+                  onOpenChange={handleVisibleChange}
+                >
+                  <div>
+                    {selectedValue?.label || "Без темы"}{" "}
+                    {isDropdownVisible ? <BsChevronUp /> : <BsChevronDown />}
+                    {selectedValue?.img === "" ||
+                    selectedValue?.img === undefined ? (
+                      ""
+                    ) : (
                       <span>
                         <img src={selectedValue?.img} alt="" />
                       </span>
-                  }
-                </div>
-              </Dropdown>
-            </span>
-          </div>
-
-
-          <div onClick={(e) => handleWrapperClick(e)}
-            className="text_ar_box">
-            <div
-              className="input_btn"
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(false)}
-            >
-              {!(isFocused || !hasText || !isHovered) && (
-                <button
-                  onMouseEnter={() => setIsHovered(true)}
-                  onMouseLeave={() => setIsHovered(false)}
-                >
-                  <BiGridVertical />
-                </button>
-              )}
-              <input
-                type="text"
-                className="Заголовокs"
-                placeholder="Заголовок"
-                onFocus={() => setIsFocused(true)} // Fokus holatida
-                onBlur={() => setIsFocused(false)} // Fokusdan chiqishda
-                onChange={handleInputChange} // Matnni kuzatish
-              />
+                    )}
+                  </div>
+                </Dropdown>
+              </span>
             </div>
 
-
-            {elements.map((element, index) => (
+            <div onClick={(e) => handleWrapperClick(e)} className="text_ar_box">
               <div
-                className="input_btn_nexts"
-                key={element.id}
-                style={{ marginBottom: "10px" }}
-                onMouseEnter={() => setHoveredInputId(element.id)} // Hoverga kirganida ID ni o'rnatish
-                onMouseLeave={() => setHoveredInputId(null)} // Hoverdan chiqqanida ID ni tozalash
+                className="input_btn"
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
               >
-                {hoveredInputId === element.id ? (
-                  <button>
+                {!(isFocused || !hasText || !isHovered) && (
+                  <button
+                    onMouseEnter={() => setIsHovered(true)}
+                    onMouseLeave={() => setIsHovered(false)}
+                  >
                     <BiGridVertical />
-                  </button>
-                ) : (
-                  <button>
-                    <FiPlus />
                   </button>
                 )}
                 <input
                   type="text"
-                  placeholder={
-                    index === 0
-                      ? placeholder // Birinchi input uchun alohida placeholder
-                      : "Нажмите Tab для выбора инструмента" // Qolgan inputlar uchun umumiy placeholder
-                  }
-                  value={element?.inputValue || ""} // Har bir input qiymatini boshqarish
-                  onChange={(e) => handleInputChangese(element.id, e)} // Input o'zgarishini kuzatish
+                  className="Заголовокs"
+                  placeholder="Заголовок"
+                  onFocus={() => setIsFocused(true)} // Fokus holatida
+                  onBlur={() => setIsFocused(false)} // Fokusdan chiqishda
+                  onChange={handleInputChange} // Matnni kuzatish
                 />
               </div>
-            ))}
+
+              {elements.map((element, index) => (
+                <div
+                  className="input_btn_nexts"
+                  key={element.id}
+                  style={{ marginBottom: "10px" }}
+                  onMouseEnter={() => setHoveredInputId(element.id)} // Hoverga kirganida ID ni o'rnatish
+                  onMouseLeave={() => setHoveredInputId(null)} // Hoverdan chiqqanida ID ni tozalash
+                >
+                  {hoveredInputId === element.id ? (
+                    <button>
+                      <BiGridVertical />
+                    </button>
+                  ) : (
+                    <button>
+                      <FiPlus />
+                    </button>
+                  )}
+                  <input
+                    type="text"
+                    placeholder={
+                      index === 0
+                        ? placeholder // Birinchi input uchun alohida placeholder
+                        : "Нажмите Tab для выбора инструмента" // Qolgan inputlar uchun umumiy placeholder
+                    }
+                    value={element?.inputValue || ""} // Har bir input qiymatini boshqarish
+                    onChange={(e) => handleInputChangese(element.id, e)} // Input o'zgarishini kuzatish
+                  />
+                </div>
+              ))}
+            </div>
           </div>
 
           <div className="text_ar_btns">
             <button>Опубликовать</button>
             <Dropdown overlay={menu} trigger={["click"]}>
-              <div className="moreHorizontal"><FiMoreHorizontal /></div>
+              <div className="moreHorizontal">
+                <FiMoreHorizontal />
+              </div>
             </Dropdown>
 
             <p>
               Сохранено
-              {
-                isCheck ?
-                  <PulseLoader color="#C9CCCF" size={2} speedMultiplier={0.9} style={{ marginBottom: "-1px" }} />
-                  :
-                  <MdOutlineCheck style={{ marginBottom: "2.5px" }} />
-              }
+              {isCheck ? (
+                <PulseLoader
+                  color="#C9CCCF"
+                  size={2}
+                  speedMultiplier={0.9}
+                  style={{ marginBottom: "-1px" }}
+                />
+              ) : (
+                <MdOutlineCheck style={{ marginBottom: "2.5px" }} />
+              )}
             </p>
           </div>
-
         </div>
-
       </div>
-    </div >
+    </div>
   );
 }
 
 export default Editer;
-
-

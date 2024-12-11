@@ -16,10 +16,12 @@ import Editer from "./Editer";
 import SignIn from "./SignIn";
 import { Link } from "react-router-dom";
 import DarkModeSetting from "../../hooks/DarkModeSetting";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import axios from "../../api";
+import { sendUserInfo } from "../../context/userInfoSlice";
 
 const Navbar = () => {
+  const dispatch = useDispatch();
   const auth = useSelector((s) => s.auth);
 
   const [token, setToken] = useState(null);
@@ -158,7 +160,10 @@ const Navbar = () => {
     if (token) {
       axios
         .get("/users/me")
-        .then((res) => setUserInfo(res?.data?.innerData))
+        .then((res) => {
+          dispatch(sendUserInfo(res?.data?.innerData));
+          setUserInfo(res?.data?.innerData);
+        })
         .catch((err) => console.log(err));
     }
   }, [token]);
@@ -288,7 +293,7 @@ const Navbar = () => {
         <Button
           icon={<GoPencil />}
           type="link"
-          onClick={() => openModal("write")}
+          onClick={() => (!token ? openModal("login") : openModal("write"))}
         >
           Написать
         </Button>
