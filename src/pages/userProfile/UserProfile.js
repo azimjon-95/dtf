@@ -5,10 +5,12 @@ import { useSelector } from "react-redux";
 import { LuSettings } from "react-icons/lu";
 import folder from "../../assets/folder.png";
 import { BsChevronDown, BsChevronUp } from "react-icons/bs";
-import { PiImageSquareBold } from "react-icons/pi";
 import { GoPencil } from "react-icons/go";
 import { Dropdown, Menu } from 'antd';
 import { Link } from 'react-router-dom'
+import { PiImageSquareBold } from 'react-icons/pi';
+import { FiMove } from "react-icons/fi";
+import { SettingOutlined, DeleteOutlined } from '@ant-design/icons';
 
 const UserProfile = () => {
     const [activeTab, setActiveTab] = useState("posts");
@@ -45,6 +47,49 @@ const UserProfile = () => {
         }
     };
 
+    // const handleDrag = (e) => {
+    //     const coverElement = document.querySelector(".cover-image");
+    //     const imgElement = coverElement.querySelector("img");
+
+    //     const rect = coverElement.getBoundingClientRect();
+    //     const imgRect = imgElement.getBoundingClientRect();
+
+    //     let newX = position.x + e.movementX;
+    //     let newY = position.y + e.movementY;
+
+    //     // Rasm cheklovlarini hisoblash
+    //     const minX = Math.min(0, rect.width - imgRect.width);
+    //     const minY = Math.min(0, rect.height - imgRect.height);
+    //     const maxX = 0;
+    //     const maxY = 0;
+
+    //     newX = Math.max(minX, Math.min(newX, maxX));
+    //     newY = Math.max(minY, Math.min(newY, maxY));
+
+    //     setPosition({ x: newX, y: newY });
+    // };
+
+    // const handleMouseDown = () => {
+    //     document.addEventListener("mousemove", handleDrag);
+    //     document.addEventListener("mouseup", handleMouseUp);
+    // };
+
+    // const handleMouseUp = () => {
+    //     document.removeEventListener("mousemove", handleDrag);
+    //     document.removeEventListener("mouseup", handleMouseUp);
+    // };
+
+    // const handleSave = () => {
+    //     console.log("Image saved with position:", position);
+    //     setIsEditing(false); // Tahrirlashni yakunlash
+    // };
+
+    // const handleCancel = () => {
+    //     setImage(null);
+    //     setPosition({ x: 0, y: 0 });
+    //     setIsEditing(false); // Tahrirlashni bekor qilish
+    // };
+
     const handleDrag = (e) => {
         const coverElement = document.querySelector(".cover-image");
         const imgElement = coverElement.querySelector("img");
@@ -68,13 +113,11 @@ const UserProfile = () => {
     };
 
     const handleMouseDown = () => {
-        document.addEventListener("mousemove", handleDrag);
-        document.addEventListener("mouseup", handleMouseUp);
+        document.addEventListener("click", handleDrag);
     };
 
     const handleMouseUp = () => {
-        document.removeEventListener("mousemove", handleDrag);
-        document.removeEventListener("mouseup", handleMouseUp);
+        document.removeEventListener("click", handleDrag);
     };
 
     const handleSave = () => {
@@ -86,10 +129,6 @@ const UserProfile = () => {
         setImage(null);
         setPosition({ x: 0, y: 0 });
         setIsEditing(false); // Tahrirlashni bekor qilish
-    };
-
-    const handleEditCover = () => {
-        setIsEditing(true); // Qayta tahrirlashni boshlash
     };
 
 
@@ -129,9 +168,33 @@ const UserProfile = () => {
         <Menu
             onClick={handleMenuClick}
             items={[
-                { key: 'Изменить', label: 'Изменить' },
-                { key: 'Настроить', label: 'Настроить' },
-                { key: 'Удалить', label: 'Удалить' },
+                {
+                    key: 'change',
+                    label: (
+                        <div className="bg_image_menu">
+                            <PiImageSquareBold />
+                            Изменить
+                        </div>
+                    ),
+                },
+                {
+                    key: 'configure',
+                    label: (
+                        <div className="bg_image_menu">
+                            <FiMove />
+                            Настроить
+                        </div>
+                    ),
+                },
+                {
+                    key: 'delete',
+                    label: (
+                        <div className="bg_image_menu">
+                            <DeleteOutlined />
+                            Удалить
+                        </div>
+                    ),
+                },
             ]}
         />
     );
@@ -163,23 +226,29 @@ const UserProfile = () => {
                                     src={image}
                                     alt="Uploaded"
                                     onMouseDown={handleMouseDown}
+                                    onMouseUp={handleMouseUp}
                                     style={{
-                                        width: "auto",
+                                        width: "100%",
                                         height: "auto",
                                         position: "absolute",
-                                        top: `${position.y}px`,
-                                        left: `${position.x}px`,
+                                        top: `${position.y}%`,
                                     }}
                                 />
                                 {isEditing ? (
-                                    <div className="actions_image_box">
-                                        <button onClick={handleCancel} style={{ background: '#2C2C2C' }}>
-                                            Отменить
+                                    <>
+                                        <div className="actions_image_box">
+                                            <button onClick={handleCancel} style={{ background: '#2C2C2C' }}>
+                                                Отменить
+                                            </button>
+                                            <button onClick={handleSave} style={{ background: '#007BFF' }}>
+                                                Сохранить
+                                            </button>
+
+                                        </div>
+                                        <button onClick={() => setIsEditing(true)} className="actions_image_move">
+                                            <FiMove /> Перетащите, чтобы изменить положение
                                         </button>
-                                        <button onClick={handleSave} style={{ background: '#007BFF' }}>
-                                            Сохранить
-                                        </button>
-                                    </div>
+                                    </>
                                 ) : (
                                     <Dropdown
                                         overlay={bg_image_menu}
@@ -220,7 +289,7 @@ const UserProfile = () => {
                                 </button>
                             </div>
                             <Link to="/settings">
-                                <button><LuSettings /></button>
+                                <LuSettings />
                             </Link>
                         </div>
                     </div>
