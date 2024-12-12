@@ -23,7 +23,10 @@
 }
 
 .profile-card_main {
-    color: #fff;
+    font: 400 17px / 26px Roboto, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif;
+    vertical-align: baseline;
+    color: rgb(150, 156, 157);
+    cursor: default;
     border-radius: 8px;
     overflow: hidden;
     margin-bottom: 20px;
@@ -32,6 +35,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.profile-card_main>img {
+    opacity: .2;
 }
 
 .cover-image {
@@ -201,7 +210,7 @@
     color: #555;
 }
 
-.profile-info>button {
+.profile-info>a>button {
     font: 500 18px / 15px Roboto, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif;
     overflow: visible;
     background: none 0% 0% / auto repeat scroll padding-box border-box rgb(44, 44, 44);

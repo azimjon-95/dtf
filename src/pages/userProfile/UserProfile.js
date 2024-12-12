@@ -3,10 +3,12 @@ import './style.css'
 import Layout from "../../components/layout/Layout";
 import { useSelector } from "react-redux";
 import { LuSettings } from "react-icons/lu";
+import folder from "../../assets/folder.png";
 import { BsChevronDown, BsChevronUp } from "react-icons/bs";
 import { PiImageSquareBold } from "react-icons/pi";
 import { GoPencil } from "react-icons/go";
 import { Dropdown, Menu } from 'antd';
+import { Link } from 'react-router-dom'
 
 const UserProfile = () => {
     const [activeTab, setActiveTab] = useState("posts");
@@ -123,6 +125,16 @@ const UserProfile = () => {
         />
     );
 
+    const bg_image_menu = (
+        <Menu
+            onClick={handleMenuClick}
+            items={[
+                { key: 'Изменить', label: 'Изменить' },
+                { key: 'Настроить', label: 'Настроить' },
+                { key: 'Удалить', label: 'Удалить' },
+            ]}
+        />
+    );
 
     return (
         <Layout>
@@ -169,10 +181,15 @@ const UserProfile = () => {
                                         </button>
                                     </div>
                                 ) : (
-                                    <button className="actions_image_edit"
-                                        onClick={handleEditCover}   >
-                                        <GoPencil />  Редактировать обложку
-                                    </button>
+                                    <Dropdown
+                                        overlay={bg_image_menu}
+                                        trigger={['click']}
+                                        onOpenChange={handleDropdownVisibleChange}
+                                    >
+                                        <button className="actions_image_edit">
+                                            <GoPencil />  Редактировать обложку
+                                        </button>
+                                    </Dropdown>
                                 )}
                             </div>
                         )}
@@ -202,42 +219,56 @@ const UserProfile = () => {
                                     Комментарии
                                 </button>
                             </div>
-                            <button><LuSettings /></button>
+                            <Link to="/settings">
+                                <button><LuSettings /></button>
+                            </Link>
                         </div>
                     </div>
 
 
-                    {activeTab === 'posts' && <div className='profile-posts'>
-                        <div style={{ marginBottom: '5px' }}>
-                            <Dropdown
-                                overlay={menu}
-                                trigger={['click']}
-                                onOpenChange={handleDropdownVisibleChange}
-                            >
-                                <button className="profile-select" >
-                                    {selectedCategory} {selectedOpen ? < BsChevronUp /> : <BsChevronDown />}
-                                </button>
-                            </Dropdown>
+                    {activeTab === 'posts' && <> {false ?
+                        <div className='profile-posts'>
+                            <div style={{ marginBottom: '5px' }}>
+                                <Dropdown
+                                    overlay={menu}
+                                    trigger={['click']}
+                                    onOpenChange={handleDropdownVisibleChange}
+                                >
+                                    <button className="profile-select" >
+                                        {selectedCategory} {selectedOpen ? < BsChevronUp /> : <BsChevronDown />}
+                                    </button>
+                                </Dropdown>
+                            </div>
+                            <div className='profile-posts'></div>
                         </div>
-                        <div className="profile-card_main"><p>Здесь пока ничего нет</p></div>
-                    </div>}
-                    {activeTab === 'comments' && <div className='profile-posts'>
-                        <div style={{ marginBottom: '5px' }}>
-                            <Dropdown
-                                overlay={menu}
-                                trigger={['click']}
-                                onOpenChange={handleDropdownVisibleChange}
-                            >
-                                <button className="profile-select" >
-                                    {selectedCategory} {selectedOpen ? < BsChevronUp /> : <BsChevronDown />}
-                                </button>
-                            </Dropdown>
+                        :
+                        <div className="profile-card_main">
+                            <img width={130} src={folder} alt="" />
+                            <p>Здесь пока ничего нет</p>
                         </div>
-                        <div className="profile-card_main"><p>Здесь пока ничего нет</p></div>
-                    </div>}
+                    } </>}
 
-
-
+                    {activeTab === 'comments' && <> {false ?
+                        <div className='profile-posts'>
+                            <div style={{ marginBottom: '5px' }}>
+                                <Dropdown
+                                    overlay={menu}
+                                    trigger={['click']}
+                                    onOpenChange={handleDropdownVisibleChange}
+                                >
+                                    <button className="profile-select" >
+                                        {selectedCategory} {selectedOpen ? < BsChevronUp /> : <BsChevronDown />}
+                                    </button>
+                                </Dropdown>
+                            </div>
+                            <div className='profile-posts'></div>
+                        </div>
+                        :
+                        <div className="profile-card_main">
+                            <img width={130} src={folder} alt="" />
+                            <p>Здесь пока ничего нет</p>
+                        </div>
+                    } </>}
                 </div>
             </div>
         </Layout>
