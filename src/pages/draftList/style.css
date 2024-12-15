@@ -1,0 +1,275 @@
+.draftList-continer {
+    width: 100%;
+    border-radius: 10px;
+    margin: 10px 0;
+    padding-bottom: 15px;
+}
+
+
+.draftList-header {
+    font: 400 17px / 26px Roboto, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif;
+    padding: 0px 18px;
+    vertical-align: baseline;
+    align-items: center;
+    background-color: rgb(35, 35, 36);
+    border-radius: 10px 10px 0px 0px;
+    box-shadow: rgb(53, 52, 54) 0px -1px 0px 0px inset;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+    color: rgb(201, 204, 207);
+    background-color: #232324;
+}
+
+.draftList-header>h2 {
+    font: 500 17px / 26px Roboto, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif;
+    vertical-align: baseline;
+    color: rgb(201, 204, 207);
+    background-color: rgb(35, 35, 36);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+
+.draftList_setting-inner_box {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.draftList_cards {
+    display: flex;
+    align-items: start;
+}
+
+.draftList_setting-inner_box .ant-card-bordered {
+    border: none !important;
+}
+
+
+.draftList_setting-inner_box .ant-card:first-child .ant-card-body {
+    border-radius: 0px 0px 10px 10px !important;
+}
+
+.draftList_setting-inner_box .ant-card:not(:first-child) .ant-card-body {
+    border-radius: 10px !important;
+}
+
+.draftList_setting-inner_box .ant-card-bordered {
+    border: none !important;
+}
+
+.draftList_setting-inner_box .ant-card-body {
+    padding: 15px;
+    display: flex;
+    overflow: hidden !important;
+    flex-direction: column;
+    background-color: rgb(35, 35, 36);
+    border: none !important;
+    border-radius: 0 0 10px 10px !important
+}
+
+.draftList_setting-inner_box .ant-card {
+    box-sizing: border-box;
+    color: rgba(0, 0, 0, 0.88);
+    font-size: 14px;
+    line-height: 1.5714285714285714;
+    list-style: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    position: relative;
+    background: transparent !important;
+}
+
+.dr_btns {
+    font: 500 13px / 18px Roboto, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif;
+    margin: 0px 8px 0px 0px;
+    padding: 4px 8px;
+    vertical-align: baseline;
+    background-color: rgba(255, 255, 255, 0.06);
+    border-radius: 8px;
+    color: rgb(201, 204, 207);
+    border: none;
+}
+
+.dr_btns_menu {
+    font: 400 26px / 19.55px Roboto, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif;
+    overflow: visible;
+    background: none 0% 0% / auto repeat scroll padding-box border-box rgba(51, 51, 51, 0);
+    border-radius: 50%;
+    color: rgb(150, 156, 157);
+    cursor: pointer;
+    touch-action: manipulation;
+    border: none;
+    height: 31px;
+    width: 31px;
+}
+
+.dr_btns_menu:hover {
+    background: none 0% 0% / auto repeat scroll padding-box border-box rgb(51, 51, 51);
+}
+
+.draftList_cards_name {
+    font: 500 15px / 22px Roboto, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif !important;
+    vertical-align: baseline;
+    color: #c9cccf !important;
+    text-decoration: none solid #c9cccf;
+    opacity: 0.72;
+    white-space: nowrap;
+}
+
+.draftList_cards_date {
+    font: 400 13px / 18px Roboto, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif;
+    vertical-align: baseline;
+    color: #969c9d;
+    text-decoration-color: #969c9d;
+    text-decoration-style: solid;
+    text-decoration-thickness: auto;
+    background-color: #00000000;
+}
+
+.draftList_cards_title {
+    background-color: #00000000;
+    font: 400 17px / 26px Roboto, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif;
+    vertical-align: baseline;
+    color: #c9cccf !important;
+    margin-top: 9px;
+    margin-left: 2px;
+    text-decoration: none solid #c9cccf;
+}
+
+.ant-modal-header {
+    color: #ffffff !important;
+    background-color: #232324 !important;
+    margin-bottom: 8px;
+    padding: 13px 20px !important;
+    border-bottom: none;
+    border-bottom: 1px solid #c9cccf74 !important;
+}
+
+.ant-modal-title {
+    color: rgb(255, 255, 255) !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    line-height: 24px !important;
+    overflow-wrap: break-word;
+    font-family: roboto;
+    -webkit-user-select: none;
+    user-select: none;
+    list-style: outside none none;
+    background: none 0% 0% / auto repeat scroll padding-box border-box rgb(35, 35, 36);
+}
+
+.ant-modal-close {
+    position: absolute;
+    top: 12px;
+    z-index: 1010;
+    padding: 0;
+    color: rgb(255, 255, 255) !important;
+    font-weight: 600;
+    line-height: 1;
+    text-decoration: none;
+    background: transparent;
+    border-radius: 50% !important;
+    width: 32px;
+    height: 32px;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    transition: color 0.2s, background-color 0.2s;
+}
+
+.ant-modal-close:hover {
+    background: #7979797e !important;
+}
+
+.ant-btn-variant-dashed {
+    border-color: #d9d9d9;
+    background: transparent !important;
+}
+
+.ant-modal-title {
+    margin: 0;
+    color: #ffffff !important;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.5;
+    word-wrap: break-word;
+}
+
+.ant-modal-content {
+    position: relative;
+    background-color: #232324 !important;
+    background-clip: padding-box;
+    border: 0;
+    border-radius: 8px;
+    overflow: hidden !important;
+    box-shadow: 0 6px 16px 0 #00000014, 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+    pointer-events: auto;
+    padding: 0px 0px !important;
+}
+
+.ant-modal-body {
+    line-height: 1.5714285714285714;
+    word-wrap: break-word;
+    padding: 10px 20px 0 20px !important;
+    font: 400 17px / 26px Roboto, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif !important;
+    vertical-align: baseline;
+    will-change: opacity, transform;
+    color: rgb(201, 204, 207);
+    background: none 0% 0% / auto repeat scroll padding-box border-box rgb(35, 35, 36);
+}
+
+.ant-modal-footer {
+    text-align: end;
+    background: transparent;
+    margin-top: 12px;
+    padding: 5px 0px 20px 20px !important;
+    border-top: none;
+    border-radius: 0 0 10px 10px !important;
+    display: flex;
+    justify-content: flex-end;
+
+}
+
+.custom-modal .ant-modal-content {
+    -webkit-backdrop-filter: blur(70px);
+    backdrop-filter: blur(70px) !important;
+    background-color: #00000000 !important;
+}
+
+.custom-cancel-button {
+    font: 500 17px / 17px Roboto, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif;
+    overflow: visible;
+    background: none 0% 0% / auto repeat scroll padding-box border-box rgb(44, 44, 44);
+    padding: 0px 16px;
+    align-items: center;
+    border-radius: 10px;
+    color: rgb(201, 204, 207);
+    cursor: pointer;
+    display: flex;
+    height: 40px;
+    justify-content: center;
+    white-space: nowrap;
+    border: none;
+    box-shadow: rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.22) 0px 1px 4px 0px;
+}
+
+.custom-ok-button {
+    font: 500 17px / 17px Roboto, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif;
+    margin: 0px 0px 0px 12px;
+    overflow: visible;
+    background: none 0% 0% / auto repeat scroll padding-box border-box rgb(89, 143, 222);
+    padding: 0px 16px;
+    align-items: center;
+    border-radius: 10px;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    display: flex;
+    height: 40px;
+    justify-content: center;
+    white-space: nowrap;
+    border: none;
+}

@@ -133,9 +133,10 @@ const menuOptions = [
     img: "https://leonardo.osnova.io/968a91e7-3a3c-5c79-a0cb-2b3df974a697/-/format/jpeg/-/scale_crop/72x72/",
   },
 ];
+
 function Editer({ setShowModal }) {
   const userInfo = useSelector((state) => state.userInfo);
-  console.log(userInfo);
+
 
   const [showModel, setShowModel] = useState(false);
   const [isCheck, setIsCheck] = useState(false);
@@ -363,7 +364,7 @@ function Editer({ setShowModal }) {
                     {selectedValue?.label || "Без темы"}{" "}
                     {isDropdownVisible ? <BsChevronUp /> : <BsChevronDown />}
                     {selectedValue?.img === "" ||
-                    selectedValue?.img === undefined ? (
+                      selectedValue?.img === undefined ? (
                       ""
                     ) : (
                       <span>

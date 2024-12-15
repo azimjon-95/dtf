@@ -175,7 +175,7 @@ const Navbar = () => {
       </div>
 
       <div className="avatar_menu_box">
-        <Link to="/">
+        <Link to={`/u/${userInfo?._id}-${userInfo?.fullname}`}>
           <div className="avatar_myProfile">
             <Avatar
               size={45}
@@ -195,9 +195,10 @@ const Navbar = () => {
             <GoPencil /> Черновики
           </button>
         </Link>
-        <button>
-          <FiBookmark /> Закладки
-        </button>
+        <Link to="/bookmarks">
+          <button><FiBookmark /> Закладки</button>
+        </Link>
+
         <span>
           <Link to="/settings" onClick={openModalPay}>
             <button>
